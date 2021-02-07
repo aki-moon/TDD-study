@@ -19,15 +19,15 @@ public class CoinChecker {
 	}
 
 	private boolean isQuarter(Coin coin) {
-		return coin.getWeight() == 30 && coin.getDiameter() == 5;
+		return coin.weight() == 30 && coin.diameter() == 5;
 	}
 
 	private boolean isDime(Coin coin) {
-		return coin.getWeight() == 20 && coin.getDiameter() == 3;
+		return coin.weight() == 20 && coin.diameter() == 3;
 	}
 
 	private boolean isNickel(Coin coin) {
-		return coin.getWeight() == 10 && coin.getDiameter() == 2;
+		return coin.weight() == 10 && coin.diameter() == 2;
 	}
 
 }

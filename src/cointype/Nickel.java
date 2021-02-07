@@ -3,12 +3,12 @@ package oopexcersise.vendingmachine.src.cointype;
 public class Nickel extends Coin {
 
 	@Override
-	public int getWeight() {
+	public int weight() {
 		return 10;
 	}
 
 	@Override
-	public int getDiameter() {
+	public int diameter() {
 		return 2;
 	}
 
