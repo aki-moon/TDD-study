@@ -1,15 +1,15 @@
 package oopexcersise.vendingmachine.src;
 
-public class Nickel extends Coin {
+public class Dime extends Coin {
 
 	@Override
 	protected int getWeight() {
-		return 10;
+		return 20;
 	}
 
 	@Override
 	protected int getDiameter() {
-		return 2;
+		return 3;
 	}
 
 }

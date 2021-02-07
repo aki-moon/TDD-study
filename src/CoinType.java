@@ -1,5 +1,7 @@
 package oopexcersise.vendingmachine.src;
 
 public enum CoinType {
-	Nickel;
+	Nickel//
+	, Dime//
+	;
 }
