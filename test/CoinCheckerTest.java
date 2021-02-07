@@ -5,11 +5,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import oopexcersise.vendingmachine.src.Coin;
 import oopexcersise.vendingmachine.src.CoinChecker;
-import oopexcersise.vendingmachine.src.CoinType;
-import oopexcersise.vendingmachine.src.Dime;
-import oopexcersise.vendingmachine.src.Nickel;
+import oopexcersise.vendingmachine.src.cointype.Coin;
+import oopexcersise.vendingmachine.src.cointype.CoinType;
+import oopexcersise.vendingmachine.src.cointype.Dime;
+import oopexcersise.vendingmachine.src.cointype.Nickel;
+import oopexcersise.vendingmachine.src.cointype.Penny;
+import oopexcersise.vendingmachine.src.cointype.Quater;
 
 class CoinCheckerTest {
 	private CoinChecker coinChecker;
@@ -37,4 +39,9 @@ class CoinCheckerTest {
 		assertEquals(CoinType.Quater, coinChecker.checkCoin(coin));
 	}
 
+	@Test
+	void コインの重さが31gで直径が5cmの場合_コインの種類がUNKNOWNと判定されること() {
+		Coin coin = new Penny();
+		assertEquals(CoinType.UNKNOWN, coinChecker.checkCoin(coin));
+	}
 }

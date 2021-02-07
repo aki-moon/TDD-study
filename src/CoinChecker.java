@@ -1,5 +1,8 @@
 package oopexcersise.vendingmachine.src;
 
+import oopexcersise.vendingmachine.src.cointype.Coin;
+import oopexcersise.vendingmachine.src.cointype.CoinType;
+
 public class CoinChecker {
 
 	public CoinType checkCoin(Coin coin) {
@@ -12,7 +15,7 @@ public class CoinChecker {
 		if (isQuarter(coin)) {
 			return CoinType.Quater;
 		}
-		return null;
+		return CoinType.UNKNOWN;
 	}
 
 	private boolean isQuarter(Coin coin) {
