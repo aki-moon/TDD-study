@@ -7,15 +7,15 @@ public class CoinChecker {
 
 	public CoinType checkCoin(Coin coin) {
 		if (isNickel(coin)) {
-			return CoinType.Nickel;
+			return CoinType.NICKEL;
 		}
 		if (isDime(coin)) {
-			return CoinType.Dime;
+			return CoinType.DIME;
 		}
 		if (isQuarter(coin)) {
-			return CoinType.Quater;
+			return CoinType.QUARTER;
 		}
-		return CoinType.UNKNOWN;
+		return CoinType.UNDEFINED;
 	}
 
 	private boolean isQuarter(Coin coin) {

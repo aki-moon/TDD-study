@@ -24,24 +24,24 @@ class CoinCheckerTest {
 	@Test
 	void コインの重さが10gで直径が2cmの場合_コインの種類がニッケルと判定されること() {
 		Coin coin = new Nickel();
-		assertEquals(CoinType.Nickel, coinChecker.checkCoin(coin));
+		assertEquals(CoinType.NICKEL, coinChecker.checkCoin(coin));
 	}
 
 	@Test
 	void コインの重さが20gで直径が3cmの場合_コインの種類がダイムと判定されること() {
 		Coin coin = new Dime();
-		assertEquals(CoinType.Dime, coinChecker.checkCoin(coin));
+		assertEquals(CoinType.DIME, coinChecker.checkCoin(coin));
 	}
 
 	@Test
 	void コインの重さが30gで直径が5cmの場合_コインの種類がクォーターと判定されること() {
 		Coin coin = new Quater();
-		assertEquals(CoinType.Quater, coinChecker.checkCoin(coin));
+		assertEquals(CoinType.QUARTER, coinChecker.checkCoin(coin));
 	}
 
 	@Test
 	void コインの重さが31gで直径が5cmの場合_コインの種類がUNKNOWNと判定されること() {
 		Coin coin = new Penny();
-		assertEquals(CoinType.UNKNOWN, coinChecker.checkCoin(coin));
+		assertEquals(CoinType.UNDEFINED, coinChecker.checkCoin(coin));
 	}
 }
