@@ -31,4 +31,10 @@ class CoinCheckerTest {
 		assertEquals(CoinType.Dime, coinChecker.checkCoin(coin));
 	}
 
+	@Test
+	void コインの重さが30gで直径が5cmの場合_コインの種類がクォーターと判定されること() {
+		Coin coin = new Quater();
+		assertEquals(CoinType.Quater, coinChecker.checkCoin(coin));
+	}
+
 }

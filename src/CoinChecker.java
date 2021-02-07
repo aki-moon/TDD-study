@@ -9,7 +9,14 @@ public class CoinChecker {
 		if (isDime(coin)) {
 			return CoinType.Dime;
 		}
+		if (isQuarter(coin)) {
+			return CoinType.Quater;
+		}
 		return null;
+	}
+
+	private boolean isQuarter(Coin coin) {
+		return coin.getWeight() == 30 && coin.getDiameter() == 5;
 	}
 
 	private boolean isDime(Coin coin) {
