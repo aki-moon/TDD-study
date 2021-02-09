@@ -1,9 +1,20 @@
 package oopexcersise.vendingmachine.src.cointype;
 
-public abstract class Coin {
+public class Coin {
+	private int weight;
+	private int diameter;
 
-	public abstract int weight();
+	public Coin(int weight, int diameter) {
+		this.weight = weight;
+		this.diameter = diameter;
+	}
 
-	public abstract int diameter();
+	public int weight() {
+		return weight;
+	};
+
+	public int diameter() {
+		return diameter;
+	};
 
 }

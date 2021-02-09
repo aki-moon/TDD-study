@@ -5,7 +5,7 @@ import oopexcersise.vendingmachine.src.cointype.CoinType;
 
 public class CoinChecker {
 
-	public CoinType checkCoin(Coin coin) {
+	public static CoinType checkCoin(Coin coin) {
 		if (isNickel(coin)) {
 			return CoinType.NICKEL;
 		}
@@ -18,16 +18,16 @@ public class CoinChecker {
 		return CoinType.UNDEFINED;
 	}
 
-	private boolean isQuarter(Coin coin) {
-		return coin.weight() == 30 && coin.diameter() == 5;
+	private static boolean isNickel(Coin coin) {
+		return coin.weight() == 10 && coin.diameter() == 2;
 	}
 
-	private boolean isDime(Coin coin) {
+	private static boolean isDime(Coin coin) {
 		return coin.weight() == 20 && coin.diameter() == 3;
 	}
 
-	private boolean isNickel(Coin coin) {
-		return coin.weight() == 10 && coin.diameter() == 2;
+	private static boolean isQuarter(Coin coin) {
+		return coin.weight() == 30 && coin.diameter() == 5;
 	}
 
 }
