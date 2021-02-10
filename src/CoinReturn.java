@@ -2,10 +2,10 @@ package oopexcersise.vendingmachine.src;
 
 import oopexcersise.vendingmachine.src.cointype.Coin;
 
-public class Customer {
+public class CoinReturn {
 
-	public void insertCoin(Coin invalidCoin) {
-
+	public Coin getCoins() {
+		return null;
 	}
 
 }
