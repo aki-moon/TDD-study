@@ -20,7 +20,7 @@ class ScenarioTest {
 	}
 
 	@Test
-	void test() {
+	void acceptCoinTest() {
 		// 顧客がコインを入れる
 		// INSERTCOINが表示される
 		// 有効なコインを入れると、入れたコインの金額が画面表示される
