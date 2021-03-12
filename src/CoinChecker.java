@@ -4,6 +4,12 @@ import oopexcersise.vendingmachine.src.cointype.Coin;
 import oopexcersise.vendingmachine.src.cointype.CoinType;
 
 public class CoinChecker {
+	private static final double NICKEL_WEIGHT = 5.0;
+	private static final double NICKEL_DIAMETER = 21.21;
+	private static final double DIME_WEIGHT = 2.268;
+	private static final double DIME_DIAMETER = 17.91;
+	private static final double QUARTER_WEIGHT = 5.67;
+	private static final double QUARTER_DIAMETER = 24.26;
 
 	public static CoinType checkCoin(Coin coin) {
 		if (isNickel(coin)) {
@@ -19,15 +25,15 @@ public class CoinChecker {
 	}
 
 	private static boolean isNickel(Coin coin) {
-		return coin.weight() == 10 && coin.diameter() == 2;
+		return coin.weight() == NICKEL_WEIGHT && coin.diameter() == NICKEL_DIAMETER;
 	}
 
 	private static boolean isDime(Coin coin) {
-		return coin.weight() == 20 && coin.diameter() == 3;
+		return coin.weight() == DIME_WEIGHT && coin.diameter() == DIME_DIAMETER;
 	}
 
 	private static boolean isQuarter(Coin coin) {
-		return coin.weight() == 30 && coin.diameter() == 5;
+		return coin.weight() == QUARTER_WEIGHT && coin.diameter() == QUARTER_DIAMETER;
 	}
 
 }
