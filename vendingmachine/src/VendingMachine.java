@@ -1,5 +1,7 @@
 package oopexcersise.vendingmachine.src;
 
+import static oopexcersise.vendingmachine.src.cointype.CoinType.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +11,17 @@ import oopexcersise.vendingmachine.src.cointype.CoinType;
 public class VendingMachine {
 	List<Coin> insertedCoinList = new ArrayList<Coin>();
 
-	// TODO 無効なコインが複数入った場合を想定する
-	public Coin returnedCoin() {
-		return null;
+	public List<Coin> returnedCoin() {
+		List<Coin> returnedCoinList = new ArrayList<Coin>();
+		for (Coin coin : insertedCoinList) {
+			if (CoinChecker.checkCoin(coin) == UNDEFINED) {
+				returnedCoinList.add(coin);
+			}
+		}
+		return returnedCoinList;
 	}
 
-	// TODO 無効なコインが複数入った場合を想定する
-	public Coin savedCoin() {
+	public List<Coin> savedCoin() {
 		return null;
 	}
 

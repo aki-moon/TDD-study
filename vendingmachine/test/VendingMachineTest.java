@@ -53,4 +53,37 @@ class VendingMachineTest {
 		assertEquals("16", vendingMachine.display());
 	}
 
+	@Test
+	void コインを一枚も入れないとreturnedCoinには何も入っていないこと() {
+		assertTrue(vendingMachine.returnedCoin().size() == 0);
+	}
+
+	@Test
+	void ダイムを1枚入れるとreturnedCoinには何も入っていないこと() {
+		Coin dime = new Coin(2.268, 17.91);
+		vendingMachine.insertedCoin(dime);
+		assertTrue(vendingMachine.returnedCoin().size() == 0);
+	}
+
+	@Test
+	void ニッケルを1枚入れるとreturnedCoinには何も入っていないこと() {
+		Coin nickel = new Coin(5, 21.21);
+		vendingMachine.insertedCoin(nickel);
+		assertTrue(vendingMachine.returnedCoin().size() == 0);
+	}
+
+	@Test
+	void クオーターを1枚入れるとreturnedCoinには何も入っていないこと() {
+		Coin quarter = new Coin(5.67, 24.26);
+		vendingMachine.insertedCoin(quarter);
+		assertTrue(vendingMachine.returnedCoin().size() == 0);
+	}
+
+	@Test
+	void 定義されていないコインを1枚入れるとreturnedCoinに返却されること() {
+		Coin undefinedCoin = new Coin(5.66, 24.26);
+		vendingMachine.insertedCoin(undefinedCoin);
+		assertEquals(undefinedCoin, vendingMachine.returnedCoin().get(0));
+	}
+
 }
