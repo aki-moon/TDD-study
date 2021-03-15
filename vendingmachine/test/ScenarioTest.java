@@ -2,6 +2,8 @@ package oopexcersise.vendingmachine.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -39,10 +41,10 @@ class ScenarioTest {
 
 		vendingMachine.insertedCoin(undefinedCoin);
 		vendingMachine.insertedCoin(nickel);
-		Coin returnedCoin = vendingMachine.returnedCoin();
-		assertEquals(undefinedCoin, returnedCoin);
-		Coin savedCoin = vendingMachine.savedCoin();
-		assertEquals(nickel, savedCoin);
+		List<Coin> returnedCoin = vendingMachine.returnedCoin();
+		assertEquals(undefinedCoin, returnedCoin.get(0));
+		List<Coin> savedCoin = vendingMachine.savedCoin();
+		assertEquals(nickel, savedCoin.get(0));
 	}
 
 }
