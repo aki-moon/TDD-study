@@ -111,12 +111,12 @@ class VendingMachineTest {
 		vendingMachine.insertedCoin(quarter);
 		assertEquals(vendingMachine.savedCoin().get(0), quarter);
 	}
-//
-//	@Test
-//	void 定義されていないコインを1枚入れるとreturnedCoinに返却されること() {
-//		Coin undefinedCoin = new Coin(5.66, 24.26);
-//		vendingMachine.insertedCoin(undefinedCoin);
-//		assertEquals(undefinedCoin, vendingMachine.returnedCoin().get(0));
-//	}
+
+	@Test
+	void 定義されていないコインを1枚入れるとsavedCoinには何も入っていないこと() {
+		Coin undefinedCoin = new Coin(5.66, 24.26);
+		vendingMachine.insertedCoin(undefinedCoin);
+		assertTrue(vendingMachine.savedCoin().size() == 0);
+	}
 
 }
