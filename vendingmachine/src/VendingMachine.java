@@ -10,6 +10,7 @@ import oopexcersise.vendingmachine.src.cointype.CoinType;
 
 public class VendingMachine {
 	List<Coin> insertedCoinList = new ArrayList<Coin>();
+	List<Coin> savedCoinList = new ArrayList<Coin>();
 
 	public List<Coin> returnedCoin() {
 		List<Coin> returnedCoinList = new ArrayList<Coin>();
@@ -22,7 +23,13 @@ public class VendingMachine {
 	}
 
 	public List<Coin> savedCoin() {
-		return null;
+		List<Coin> savedCoinList = new ArrayList<Coin>();
+		for (Coin coin : insertedCoinList) {
+			if (CoinChecker.checkCoin(coin) != UNDEFINED) {
+				savedCoinList.add(coin);
+			}
+		}
+		return savedCoinList;
 	}
 
 	public String display() {
