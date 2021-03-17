@@ -105,12 +105,12 @@ class VendingMachineTest {
 		assertEquals(vendingMachine.savedCoin().get(0), nickel);
 	}
 
-//	@Test
-//	void クオーターを1枚入れるとreturnedCoinには何も入っていないこと() {
-//		Coin quarter = new Coin(5.67, 24.26);
-//		vendingMachine.insertedCoin(quarter);
-//		assertTrue(vendingMachine.returnedCoin().size() == 0);
-//	}
+	@Test
+	void クオーターを1枚入れるとsavedCoinにはダイムが入っていること() {
+		Coin quarter = new Coin(5.67, 24.26);
+		vendingMachine.insertedCoin(quarter);
+		assertEquals(vendingMachine.savedCoin().get(0), quarter);
+	}
 //
 //	@Test
 //	void 定義されていないコインを1枚入れるとreturnedCoinに返却されること() {
