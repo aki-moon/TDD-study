@@ -98,13 +98,13 @@ class VendingMachineTest {
 		assertEquals(vendingMachine.savedCoin().get(0), dime);
 	}
 
-//	@Test
-//	void ニッケルを1枚入れるとreturnedCoinには何も入っていないこと() {
-//		Coin nickel = new Coin(5, 21.21);
-//		vendingMachine.insertedCoin(nickel);
-//		assertTrue(vendingMachine.returnedCoin().size() == 0);
-//	}
-//
+	@Test
+	void ニッケルを1枚入れるとsavedCoinにはダイムが入っていること() {
+		Coin nickel = new Coin(5, 21.21);
+		vendingMachine.insertedCoin(nickel);
+		assertEquals(vendingMachine.savedCoin().get(0), nickel);
+	}
+
 //	@Test
 //	void クオーターを1枚入れるとreturnedCoinには何も入っていないこと() {
 //		Coin quarter = new Coin(5.67, 24.26);
