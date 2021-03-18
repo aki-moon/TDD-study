@@ -9,38 +9,32 @@ import oopexcersise.vendingmachine.src.cointype.Coin;
 import oopexcersise.vendingmachine.src.cointype.CoinType;
 
 public class VendingMachine {
-	List<Coin> insertedCoinList = new ArrayList<Coin>();
 	List<Coin> savedCoinList = new ArrayList<Coin>();
+	List<Coin> returnedCoinList = new ArrayList<Coin>();
+	List<Coin> insertedCoinList = new ArrayList<Coin>();
 
 	public List<Coin> returnedCoin() {
-		List<Coin> returnedCoinList = new ArrayList<Coin>();
-		for (Coin coin : insertedCoinList) {
-			if (CoinChecker.checkCoin(coin) == UNDEFINED) {
-				returnedCoinList.add(coin);
-			}
-		}
 		return returnedCoinList;
 	}
 
 	public List<Coin> savedCoin() {
-		List<Coin> savedCoinList = new ArrayList<Coin>();
-		for (Coin coin : insertedCoinList) {
-			if (CoinChecker.checkCoin(coin) != UNDEFINED) {
-				savedCoinList.add(coin);
-			}
-		}
 		return savedCoinList;
 	}
 
 	public String display() {
-		int totalamount = totalAmount();
-		if (totalamount == 0) {
+		if (totalAmount() == 0) {
 			return "INSERTCOIN";
 		}
-		return String.valueOf(totalamount);
+		return String.valueOf(totalAmount());
 	}
 
 	public void insertedCoin(Coin coin) {
+		if (CoinChecker.checkCoin(coin) == UNDEFINED) {
+			returnedCoinList.add(coin);
+		}
+		if (CoinChecker.checkCoin(coin) != UNDEFINED) {
+			savedCoinList.add(coin);
+		}
 		insertedCoinList.add(coin);
 	}
 
