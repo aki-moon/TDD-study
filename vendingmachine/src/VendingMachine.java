@@ -29,13 +29,17 @@ public class VendingMachine {
 	}
 
 	public void insertedCoin(Coin coin) {
-		if (CoinChecker.checkCoin(coin) == UNDEFINED) {
+		if (isValidCoin(coin)) {
 			returnedCoinList.add(coin);
 		}
-		if (CoinChecker.checkCoin(coin) != UNDEFINED) {
+		if (!isValidCoin(coin)) {
 			savedCoinList.add(coin);
 		}
 		insertedCoinList.add(coin);
+	}
+
+	private boolean isValidCoin(Coin coin) {
+		return CoinChecker.checkCoin(coin) == UNDEFINED;
 	}
 
 	private int totalAmount() {
