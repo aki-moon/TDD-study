@@ -11,7 +11,6 @@ import oopexcersise.vendingmachine.src.cointype.CoinType;
 public class VendingMachine {
 	List<Coin> savedCoinList = new ArrayList<Coin>();
 	List<Coin> returnedCoinList = new ArrayList<Coin>();
-	List<Coin> insertedCoinList = new ArrayList<Coin>();
 
 	public List<Coin> returnedCoin() {
 		return returnedCoinList;
@@ -35,7 +34,6 @@ public class VendingMachine {
 		if (!isValidCoin(coin)) {
 			savedCoinList.add(coin);
 		}
-		insertedCoinList.add(coin);
 	}
 
 	private boolean isValidCoin(Coin coin) {
@@ -44,7 +42,7 @@ public class VendingMachine {
 
 	private int totalAmount() {
 		int totalAmount = 0;
-		for (Coin coin : insertedCoinList) {
+		for (Coin coin : savedCoinList) {
 			CoinType coinType = CoinChecker.checkCoin(coin);
 			totalAmount += coinType.coinValue();
 		}
