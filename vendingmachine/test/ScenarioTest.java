@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import oopexcersise.vendingmachine.src.VendingMachine;
-import oopexcersise.vendingmachine.src.cointype.Coin;
+import oopexcersise.vendingmachine.src.coin.Coin;
 
 class ScenarioTest {
 	VendingMachine vendingMachine;

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import oopexcersise.vendingmachine.src.VendingMachine;
-import oopexcersise.vendingmachine.src.cointype.Coin;
+import oopexcersise.vendingmachine.src.coin.Coin;
 
 class VendingMachineTest {
 	private VendingMachine vendingMachine;

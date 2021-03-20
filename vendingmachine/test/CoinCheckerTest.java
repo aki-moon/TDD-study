@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import oopexcersise.vendingmachine.src.CoinChecker;
-import oopexcersise.vendingmachine.src.cointype.Coin;
-import oopexcersise.vendingmachine.src.cointype.CoinType;
+import oopexcersise.vendingmachine.src.coin.Coin;
+import oopexcersise.vendingmachine.src.coin.CoinChecker;
+import oopexcersise.vendingmachine.src.coin.CoinType;
 
 class CoinCheckerTest {
 	@Test
