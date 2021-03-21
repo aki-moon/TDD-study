@@ -1,9 +1,9 @@
 package oopexcersise.vendingmachine.src.coin;
 
 public enum CoinType {
-	DIME(10)//
+	QUARTER(25)//
+	, DIME(10)//
 	, NICKEL(5)//
-	, QUARTER(1)//
 	, UNDEFINED(0);
 
 	private int coinValue;
