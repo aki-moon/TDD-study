@@ -23,7 +23,7 @@ class SelectProductTest {
 		String messageWhenInputNothing = vendingMachine.display();
 		assertEquals("INSERTCOIN", messageWhenInputNothing);
 
-		vendingMachine.pushButton(Cola);
+		vendingMachine.pushButton(COLA);
 		Coin quarter= new Coin(5.67, 24.26);
 		vendingMachine.insertedCoin(quarter);
 		String messageWhenInputQuarterOne = vendingMachine.display();
@@ -42,13 +42,13 @@ class SelectProductTest {
 
 	@Test
 	void コーラが1ドルで購入できること()  {
-		vendingMachine.pushButton(Cola);
+		vendingMachine.pushButton(COLA);
 		Coin quarter= new Coin(5.67, 24.26);
 		vendingMachine.insertedCoin(quarter);
 		vendingMachine.insertedCoin(quarter);
 		vendingMachine.insertedCoin(quarter);
 		vendingMachine.insertedCoin(quarter);
 		Product returnedProduct = vendingMachine.returnedProduct();
-		assertEquals(Cola, returnedProduct);
+		assertEquals(COLA, returnedProduct);
 	}
 }

@@ -38,6 +38,16 @@ public class VendingMachine {
 		}
 	}
 
+	public void pushButton(Product cola) {
+	}
+
+	public void check() {
+	}
+
+	public Product returnedProduct() {
+		return null;
+	}
+
 	private boolean isValidCoin(Coin coin) {
 		return CoinChecker.checkCoin(coin) == UNDEFINED;
 	}
@@ -49,16 +59,6 @@ public class VendingMachine {
 			totalAmount += coinType.coinValue();
 		}
 		return totalAmount;
-	}
-
-	public void pushButton(Product cola) {
-	}
-
-	public void check() {
-	}
-
-	public Product returnedProduct() {
-		return null;
 	}
 
 }
