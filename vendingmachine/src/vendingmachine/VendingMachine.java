@@ -1,5 +1,6 @@
 package oopexcersise.vendingmachine.src.vendingmachine;
 
+import static oopexcersise.vendingmachine.src.Product.*;
 import static oopexcersise.vendingmachine.src.coin.CoinType.*;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class VendingMachine {
 	}
 
 	public Product returnedProduct() {
-		return null;
+		return COLA;
 	}
 
 	private boolean isValidCoin(Coin coin) {

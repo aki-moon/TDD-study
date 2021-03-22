@@ -1,11 +1,13 @@
 package oopexcersise.vendingmachine.test.vendingmachine;
 
+import static oopexcersise.vendingmachine.src.Product.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import oopexcersise.vendingmachine.src.Product;
 import oopexcersise.vendingmachine.src.coin.Coin;
 import oopexcersise.vendingmachine.src.vendingmachine.VendingMachine;
 
@@ -39,21 +41,21 @@ class VendingMachineTest {
 		}
 
 		@Test
-		void クオーターを1枚入れるとコインの合計金額が1セントと表示されること() {
+		void クオーターを1枚入れるとコインの合計金額が25セントと表示されること() {
 			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(quarter);
-			assertEquals("1", vendingMachine.display());
+			assertEquals("25", vendingMachine.display());
 		}
 
 		@Test
-		void ニッケルとダイムとクオーターを1枚ずつ入れるとコインの合計金額が16セントと表示されること() {
+		void ニッケルとダイムとクオーターを1枚ずつ入れるとコインの合計金額が40セントと表示されること() {
 			Coin dime = new Coin(2.268, 17.91);
 			Coin nickel = new Coin(5, 21.21);
 			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(dime);
 			vendingMachine.insertedCoin(nickel);
 			vendingMachine.insertedCoin(quarter);
-			assertEquals("16", vendingMachine.display());
+			assertEquals("40", vendingMachine.display());
 		}
 	}
 
@@ -126,6 +128,21 @@ class VendingMachineTest {
 			Coin undefinedCoin = new Coin(5.66, 24.26);
 			vendingMachine.insertedCoin(undefinedCoin);
 			assertTrue(vendingMachine.savedCoin().size() == 0);
+		}
+	}
+
+	@Nested
+	class ボタンを押して選択したプロダクトが一定金額を入れれば買えること {
+		@Test
+		void コーラが1ドルで購入できること() {
+			vendingMachine.pushButton(COLA);
+			Coin quarter = new Coin(5.67, 24.26);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			Product returnedProduct = vendingMachine.returnedProduct();
+			assertEquals(COLA, returnedProduct);
 		}
 	}
 
