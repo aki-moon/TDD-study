@@ -1,14 +1,14 @@
 package oopexcersise.vendingmachine.test.vendingmachine;
 
-import static oopexcersise.vendingmachine.src.Product.*;
+import static oopexcersise.vendingmachine.src.product.Product.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import oopexcersise.vendingmachine.src.Product;
 import oopexcersise.vendingmachine.src.coin.Coin;
+import oopexcersise.vendingmachine.src.product.Product;
 import oopexcersise.vendingmachine.src.vendingmachine.VendingMachine;
 
 class VendingMachineTest {

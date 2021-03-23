@@ -1,6 +1,6 @@
 package oopexcersise.vendingmachine.test.acceptance;
 
-import static oopexcersise.vendingmachine.src.Product.*;
+import static oopexcersise.vendingmachine.src.product.Product.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;

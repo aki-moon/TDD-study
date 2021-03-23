@@ -1,15 +1,15 @@
 package oopexcersise.vendingmachine.src.vendingmachine;
 
-import static oopexcersise.vendingmachine.src.Product.*;
 import static oopexcersise.vendingmachine.src.coin.CoinType.*;
+import static oopexcersise.vendingmachine.src.product.Product.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import oopexcersise.vendingmachine.src.Product;
 import oopexcersise.vendingmachine.src.coin.Coin;
 import oopexcersise.vendingmachine.src.coin.CoinChecker;
 import oopexcersise.vendingmachine.src.coin.CoinType;
+import oopexcersise.vendingmachine.src.product.Product;
 
 public class VendingMachine {
 	List<Coin> savedCoinList = new ArrayList<Coin>();
