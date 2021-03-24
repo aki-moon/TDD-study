@@ -1,7 +1,6 @@
 package oopexcersise.vendingmachine.src.vendingmachine;
 
 import static oopexcersise.vendingmachine.src.coin.CoinType.*;
-import static oopexcersise.vendingmachine.src.product.Product.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +9,15 @@ import oopexcersise.vendingmachine.src.coin.Coin;
 import oopexcersise.vendingmachine.src.coin.CoinChecker;
 import oopexcersise.vendingmachine.src.coin.CoinType;
 import oopexcersise.vendingmachine.src.product.Product;
+import oopexcersise.vendingmachine.src.state.DisplayPanelState;
+import oopexcersise.vendingmachine.src.state.RequestCoinState;
+import oopexcersise.vendingmachine.src.state.ShowAmountState;
 
 public class VendingMachine {
-	List<Coin> savedCoinList = new ArrayList<Coin>();
-	List<Coin> returnedCoinList = new ArrayList<Coin>();
+	private List<Coin> savedCoinList = new ArrayList<Coin>();
+	private List<Coin> returnedCoinList = new ArrayList<Coin>();
+	private DisplayPanelState state = RequestCoinState.getInstance();
+	private Product selectedProduct;
 
 	public List<Coin> returnedCoin() {
 		return returnedCoinList;
@@ -31,25 +35,27 @@ public class VendingMachine {
 	}
 
 	public void insertedCoin(Coin coin) {
-		if (isValidCoin(coin)) {
+		if (isInvalidCoin(coin)) {
 			returnedCoinList.add(coin);
 		}
-		if (!isValidCoin(coin)) {
+		if (!isInvalidCoin(coin)) {
 			savedCoinList.add(coin);
+			state = ShowAmountState.getInstance();
 		}
 	}
 
-	public void pushButton(Product cola) {
+	public void pushButton(Product product) {
+		selectedProduct = product;
 	}
 
 	public void check() {
 	}
 
 	public Product returnedProduct() {
-		return COLA;
+		return selectedProduct;
 	}
 
-	private boolean isValidCoin(Coin coin) {
+	private boolean isInvalidCoin(Coin coin) {
 		return CoinChecker.checkCoin(coin) == UNDEFINED;
 	}
 
