@@ -144,6 +144,30 @@ class VendingMachineTest {
 			Product returnedProduct = vendingMachine.returnedProduct();
 			assertEquals(COLA, returnedProduct);
 		}
+
+		@Test
+		void キャンディが65セントで購入できること() {
+			vendingMachine.pushButton(CANDY);
+			Coin quarter = new Coin(5.67, 24.26);
+			Coin dime = new Coin(2.268, 17.91);
+			Coin nickel = new Coin(5, 21.21);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(dime);
+			vendingMachine.insertedCoin(nickel);
+			Product returnedProduct = vendingMachine.returnedProduct();
+			assertEquals(CANDY, returnedProduct);
+		}
+
+		@Test
+		void チップスが50セントで購入できること() {
+			vendingMachine.pushButton(CHIPS);
+			Coin quarter = new Coin(5.67, 24.26);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			Product returnedProduct = vendingMachine.returnedProduct();
+			assertEquals(CHIPS, returnedProduct);
+		}
 	}
 
 }
