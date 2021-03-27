@@ -35,12 +35,12 @@ public class VendingMachine {
 	}
 
 	public void insertedCoin(Coin coin) {
-		if (isInvalidCoin(coin)) {
-			returnedCoinList.add(coin);
-		}
-		if (!isInvalidCoin(coin)) {
+		if (isValidCoin(coin)) {
 			savedCoinList.add(coin);
 			state = ShowAmountState.getInstance();
+		}
+		if (!isValidCoin(coin)) {
+			returnedCoinList.add(coin);
 		}
 	}
 
@@ -52,11 +52,14 @@ public class VendingMachine {
 	}
 
 	public Product returnedProduct() {
-		return selectedProduct;
+		if (selectedProduct.value() == totalAmount()) {
+			return selectedProduct;
+		}
+		return null;
 	}
 
-	private boolean isInvalidCoin(Coin coin) {
-		return CoinChecker.checkCoin(coin) == UNDEFINED;
+	private boolean isValidCoin(Coin coin) {
+		return CoinChecker.checkCoin(coin) != UNDEFINED;
 	}
 
 	private int totalAmount() {

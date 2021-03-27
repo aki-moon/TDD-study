@@ -168,6 +168,17 @@ class VendingMachineTest {
 			Product returnedProduct = vendingMachine.returnedProduct();
 			assertEquals(CHIPS, returnedProduct);
 		}
+
+		@Test
+		void コーラが75セントでは購入できないこと() {
+			vendingMachine.pushButton(COLA);
+			Coin quarter = new Coin(5.67, 24.26);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			Product returnedProduct = vendingMachine.returnedProduct();
+			assertNull(returnedProduct);
+		}
 	}
 
 }

@@ -6,7 +6,7 @@ public class AfterPurchaseState implements DisplayPanelState {
 	private AfterPurchaseState() {
 	}
 
-	public DisplayPanelState getInstance(){
+	public static DisplayPanelState getInstance(){
 		return state;
 	}
 }
