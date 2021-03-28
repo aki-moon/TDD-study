@@ -7,6 +7,7 @@ import oopexcersise.vendingmachine.src.coin.Coin;
 import oopexcersise.vendingmachine.src.coin.CoinChecker;
 import oopexcersise.vendingmachine.src.coin.CoinType;
 import oopexcersise.vendingmachine.src.product.Product;
+import oopexcersise.vendingmachine.src.state.AfterPurchaseState;
 import oopexcersise.vendingmachine.src.state.DisplayPanelState;
 import oopexcersise.vendingmachine.src.state.RequestCoinState;
 import oopexcersise.vendingmachine.src.state.ShowAmountState;
@@ -54,7 +55,7 @@ public class VendingMachine {
 		if (selectedProduct.value() == totalAmount()) {
 			returnedProduct = selectedProduct;
 			clearSelectedProduct();
-			state = RequestCoinState.getInstance();
+			state = AfterPurchaseState.getInstance();
 		}
 		return returnedProduct;
 	}
