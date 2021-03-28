@@ -9,4 +9,9 @@ public class AfterPurchaseState implements DisplayPanelState {
 	public static DisplayPanelState getInstance(){
 		return state;
 	}
+
+	@Override
+	public String display() {
+		return "THANKYOU";
+	}
 }

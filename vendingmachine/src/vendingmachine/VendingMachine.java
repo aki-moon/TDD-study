@@ -59,8 +59,8 @@ public class VendingMachine {
 		return returnedProduct;
 	}
 
-	private Product clearSelectedProduct() {
-		return selectedProduct = null;
+	private void clearSelectedProduct() {
+		selectedProduct = null;
 	}
 
 	private int totalAmount() {

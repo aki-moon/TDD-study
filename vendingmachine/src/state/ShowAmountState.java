@@ -9,4 +9,9 @@ public class ShowAmountState implements DisplayPanelState {
 	public static DisplayPanelState getInstance(){
 		return state;
 	}
+
+	@Override
+	public String display() {
+		return null;
+	}
 }
