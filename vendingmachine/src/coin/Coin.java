@@ -1,5 +1,7 @@
 package oopexcersise.vendingmachine.src.coin;
 
+import static oopexcersise.vendingmachine.src.coin.CoinType.*;
+
 public class Coin {
 	private double weight;
 	private double diameter;
@@ -16,6 +18,10 @@ public class Coin {
 	public double diameter() {
 		return diameter;
 	};
+
+	public boolean isValidCoin() {
+		return CoinChecker.checkCoin(this) != UNDEFINED;
+	}
 
 	@Override
 	public boolean equals(Object coin) {

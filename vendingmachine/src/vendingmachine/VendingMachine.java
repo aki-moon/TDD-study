@@ -1,7 +1,5 @@
 package oopexcersise.vendingmachine.src.vendingmachine;
 
-import static oopexcersise.vendingmachine.src.coin.CoinType.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,11 +33,11 @@ public class VendingMachine {
 	}
 
 	public void insertedCoin(Coin coin) {
-		if (isValidCoin(coin)) {
+		if (coin.isValidCoin()) {
 			savedCoinList.add(coin);
 			state = ShowAmountState.getInstance();
 		}
-		if (!isValidCoin(coin)) {
+		if (!coin.isValidCoin()) {
 			returnedCoinList.add(coin);
 		}
 	}
@@ -56,10 +54,6 @@ public class VendingMachine {
 			return selectedProduct;
 		}
 		return null;
-	}
-
-	private boolean isValidCoin(Coin coin) {
-		return CoinChecker.checkCoin(coin) != UNDEFINED;
 	}
 
 	private int totalAmount() {
