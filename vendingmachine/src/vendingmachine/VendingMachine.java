@@ -50,10 +50,17 @@ public class VendingMachine {
 	}
 
 	public Product returnedProduct() {
+		Product returnedProduct = null;
 		if (selectedProduct.value() == totalAmount()) {
-			return selectedProduct;
+			returnedProduct = selectedProduct;
+			clearSelectedProduct();
+			state = RequestCoinState.getInstance();
 		}
-		return null;
+		return returnedProduct;
+	}
+
+	private Product clearSelectedProduct() {
+		return selectedProduct = null;
 	}
 
 	private int totalAmount() {
