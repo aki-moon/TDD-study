@@ -20,6 +20,7 @@ There are three products: cola for $1.00, chips for $0.50, and candy for $0.65. 
 
 ### Make Change
 *As a vendor*
+
 I want customers to receive correct change
 So that they will use the vending machine again
 
@@ -27,6 +28,7 @@ When a product is selected that costs less than the amount of money in the machi
 
 ### Return Coins
 *As a customer*
+
 I want to have my money returned
 So that I can change my mind about buying stuff from the vending machine
 
@@ -34,6 +36,7 @@ When the return coins button is pressed, the money the customer has placed in th
 
 ### Sold Out
 *As a customer*
+
 I want to be told when the item I have selected is not available
 So that I can select another item
 
@@ -41,6 +44,7 @@ When the item selected by the customer is out of stock, the machine displays SOL
 
 ### Exact Change Only
 *As a customer*
+
 I want to be told when exact change is required
 So that I can determine if I can buy something with the money I have before inserting it
 
