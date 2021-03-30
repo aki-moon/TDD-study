@@ -3,7 +3,6 @@ package oopexcersise.vendingmachine.src.vendingmachine;
 import java.util.ArrayList;
 import java.util.List;
 
-import oopexcersise.vendingmachine.src.SelectedProduct;
 import oopexcersise.vendingmachine.src.coin.Coin;
 import oopexcersise.vendingmachine.src.coin.CoinChecker;
 import oopexcersise.vendingmachine.src.coin.CoinType;
@@ -17,7 +16,7 @@ public class VendingMachine {
 	private List<Coin> savedCoinList = new ArrayList<Coin>();
 	private List<Coin> returnedCoinList = new ArrayList<Coin>();
 	private DisplayPanelState state = RequestCoinState.getInstance();
-	private SelectedProduct selectedProduct = new SelectedProduct();
+	private Product selectedProduct;
 
 	public List<Coin> returnedCoin() {
 		return returnedCoinList;
@@ -45,7 +44,7 @@ public class VendingMachine {
 	}
 
 	public void pushButton(Product product) {
-		selectedProduct.setProduct(product);
+		selectedProduct = product;
 	}
 
 	public void check() {
@@ -54,7 +53,7 @@ public class VendingMachine {
 	public Product returnedProduct() {
 		Product returnedProduct = null;
 		if (selectedProduct.value() == totalAmount()) {
-			returnedProduct = selectedProduct.product();
+			returnedProduct = selectedProduct;
 			clearSelectedProduct();
 			state = AfterPurchaseState.getInstance();
 		}
