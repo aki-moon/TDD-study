@@ -5,18 +5,11 @@ import java.util.List;
 
 import oopexcersise.vendingmachine.src.SelectedProduct;
 import oopexcersise.vendingmachine.src.coin.Coin;
-import oopexcersise.vendingmachine.src.coin.CoinChecker;
-import oopexcersise.vendingmachine.src.coin.CoinType;
 import oopexcersise.vendingmachine.src.product.Product;
-import oopexcersise.vendingmachine.src.state.AfterPurchaseState;
-import oopexcersise.vendingmachine.src.state.DisplayPanelState;
-import oopexcersise.vendingmachine.src.state.RequestCoinState;
-import oopexcersise.vendingmachine.src.state.ShowAmountState;
 
 public class VendingMachine {
-	private List<Coin> savedCoinList = new ArrayList<Coin>();
 	private List<Coin> returnedCoinList = new ArrayList<Coin>();
-	private DisplayPanelState state = RequestCoinState.getInstance();
+	private DisplayPanel displayPanel = new DisplayPanel();
 	private SelectedProduct selectedProduct = new SelectedProduct();
 
 	public List<Coin> returnedCoin() {
@@ -24,20 +17,16 @@ public class VendingMachine {
 	}
 
 	public List<Coin> savedCoin() {
-		return savedCoinList;
+		return displayPanel.savedCoinList();
 	}
 
 	public String display() {
-		if (totalAmount() == 0) {
-			return "INSERTCOIN";
-		}
-		return String.valueOf(totalAmount());
+		return displayPanel.display();
 	}
 
 	public void insertedCoin(Coin coin) {
 		if (coin.isValidCoin()) {
-			savedCoinList.add(coin);
-			state = ShowAmountState.getInstance();
+			displayPanel.addCoin(coin);
 		}
 		if (!coin.isValidCoin()) {
 			returnedCoinList.add(coin);
@@ -53,25 +42,16 @@ public class VendingMachine {
 
 	public Product returnedProduct() {
 		Product returnedProduct = null;
-		if (selectedProduct.value() == totalAmount()) {
+		if (selectedProduct.value() == displayPanel.totalAmount()) {
 			returnedProduct = selectedProduct.product();
 			clearSelectedProduct();
-			state = AfterPurchaseState.getInstance();
+			displayPanel.returnedProduct();
 		}
 		return returnedProduct;
 	}
 
 	private void clearSelectedProduct() {
 		selectedProduct = null;
-	}
-
-	private int totalAmount() {
-		int totalAmount = 0;
-		for (Coin coin : savedCoinList) {
-			CoinType coinType = CoinChecker.checkCoin(coin);
-			totalAmount += coinType.coinValue();
-		}
-		return totalAmount;
 	}
 
 }

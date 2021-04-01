@@ -1,5 +1,7 @@
 package oopexcersise.vendingmachine.src.state;
 
+import oopexcersise.vendingmachine.src.vendingmachine.DisplayPanel;
+
 public class RequestCoinState implements DisplayPanelState {
 	private static RequestCoinState state = new RequestCoinState();
 
@@ -11,7 +13,7 @@ public class RequestCoinState implements DisplayPanelState {
 	}
 
 	@Override
-	public String display() {
+	public String display(DisplayPanel displayPanel) {
 		return "INSERTCOIN";
 	}
 }

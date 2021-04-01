@@ -1,5 +1,7 @@
 package oopexcersise.vendingmachine.src.state;
 
+import oopexcersise.vendingmachine.src.vendingmachine.DisplayPanel;
+
 public class AfterPurchaseState implements DisplayPanelState {
 	private static AfterPurchaseState state = new AfterPurchaseState();
 
@@ -11,7 +13,7 @@ public class AfterPurchaseState implements DisplayPanelState {
 	}
 
 	@Override
-	public String display() {
+	public String display(DisplayPanel displayPanel) {
 		return "THANKYOU";
 	}
 }
