@@ -23,6 +23,10 @@ public class Coin {
 		return CoinChecker.checkCoin(this) != UNDEFINED;
 	}
 
+	public boolean isUnvalidCoin() {
+		return CoinChecker.checkCoin(this) == UNDEFINED;
+	}
+
 	@Override
 	public boolean equals(Object coin) {
 		if(coin instanceof Coin) {
