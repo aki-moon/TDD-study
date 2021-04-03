@@ -14,8 +14,12 @@ public class ShowAmountState implements DisplayPanelState {
 
 	@Override
 	public String display(int totalAmountOfCent) {
-		BigDecimal totalAmountOfDollers = BigDecimal.valueOf(totalAmountOfCent).divide(BigDecimal.valueOf(100));
+		BigDecimal totalAmountOfDollers = changeAmountFromDollerToCent(totalAmountOfCent);
 		return String.valueOf(totalAmountOfDollers);
+	}
+
+	private BigDecimal changeAmountFromDollerToCent(int totalAmountOfCent) {
+		return BigDecimal.valueOf(totalAmountOfCent).divide(BigDecimal.valueOf(100));
 	}
 
 }
