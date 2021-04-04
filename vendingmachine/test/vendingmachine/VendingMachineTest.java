@@ -27,35 +27,35 @@ class VendingMachineTest {
 		}
 
 		@Test
-		void ダイムを1枚入れるとコインの合計金額が10セントと表示されること() {
+		void ダイムを1枚入れるとコインの合計金額が0_1ドルと表示されること() {
 			Coin dime = new Coin(2.268, 17.91);
 			vendingMachine.insertedCoin(dime);
-			assertEquals("10", vendingMachine.display());
+			assertEquals("0.1", vendingMachine.display());
 		}
 
 		@Test
-		void ニッケルを1枚入れるとコインの合計金額が5セントと表示されること() {
+		void ニッケルを1枚入れるとコインの合計金額が0_05ドルと表示されること() {
 			Coin nickel = new Coin(5, 21.21);
 			vendingMachine.insertedCoin(nickel);
-			assertEquals("5", vendingMachine.display());
+			assertEquals("0.05", vendingMachine.display());
 		}
 
 		@Test
-		void クオーターを1枚入れるとコインの合計金額が25セントと表示されること() {
+		void クオーターを1枚入れるとコインの合計金額が0_25ドルと表示されること() {
 			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(quarter);
-			assertEquals("25", vendingMachine.display());
+			assertEquals("0.25", vendingMachine.display());
 		}
 
 		@Test
-		void ニッケルとダイムとクオーターを1枚ずつ入れるとコインの合計金額が40セントと表示されること() {
+		void ニッケルとダイムとクオーターを1枚ずつ入れるとコインの合計金額が0_4ドルと表示されること() {
 			Coin dime = new Coin(2.268, 17.91);
 			Coin nickel = new Coin(5, 21.21);
 			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(dime);
 			vendingMachine.insertedCoin(nickel);
 			vendingMachine.insertedCoin(quarter);
-			assertEquals("40", vendingMachine.display());
+			assertEquals("0.4", vendingMachine.display());
 		}
 	}
 

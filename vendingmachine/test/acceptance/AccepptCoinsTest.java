@@ -31,7 +31,7 @@ class AccepptCoinsTest {
 		Coin nickel = new Coin(5, 21.21);
 		vendingMachine.insertedCoin(nickel);
 		String messageWhenInputNickel = vendingMachine.display();
-		assertEquals("5", messageWhenInputNickel);
+		assertEquals("0.05", messageWhenInputNickel);
 	}
 
 	@Test
