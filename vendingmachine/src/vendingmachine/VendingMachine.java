@@ -12,6 +12,7 @@ public class VendingMachine {
 	private DisplayPanel displayPanel = new DisplayPanel();
 	private SelectedProduct selectedProduct = new SelectedProduct();
 	private SavedCoin savedCoin = new SavedCoin();
+	private InsertedCoin insertedCoin = new InsertedCoin();
 
 	public List<Coin> returnedCoin() {
 		return returnedCoinList;
@@ -22,11 +23,12 @@ public class VendingMachine {
 	}
 
 	public String display() {
-		return displayPanel.display(savedCoin.totalAmount());
+		return displayPanel.display(insertedCoin.totalAmount());
 	}
 
 	public void insertedCoin(Coin coin) {
 		if (coin.isValidCoin()) {
+			insertedCoin.addCoin(coin);
 			savedCoin.addCoin(coin);
 			displayPanel.addCoin(coin);
 		}
@@ -40,14 +42,15 @@ public class VendingMachine {
 	}
 
 	public void check() {
+		displayPanel.check();
 	}
 
 	public Product returnedProduct() {
 		Product returnedProduct = null;
-		if (selectedProduct.value() == savedCoin.totalAmount()) {
+		if (selectedProduct.value() == insertedCoin.totalAmount()) {
 			returnedProduct = selectedProduct.product();
 			clearSelectedProduct();
-			displayPanel.returnedProduct();
+			insertedCoin.clear();
 		}
 		return returnedProduct;
 	}

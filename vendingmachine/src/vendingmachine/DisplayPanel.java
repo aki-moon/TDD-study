@@ -17,7 +17,7 @@ public class DisplayPanel {
 		state = ShowAmountState.getInstance();
 	}
 
-	public void returnedProduct() {
+	public void check() {
 		state = AfterPurchaseState.getInstance();
 	}
 
