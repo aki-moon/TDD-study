@@ -50,4 +50,5 @@ So that I can determine if I can buy something with the money I have before inse
 
 When the machine is not able to make change with the money in the machine for any of the items that it sells, it will display EXACT CHANGE ONLY instead of INSERT COIN.
 
-※ https://github.com/guyroyse/vending-machine-kata
+※お題は以下を参照
+ https://github.com/guyroyse/vending-machine-kata
