@@ -1,4 +1,4 @@
-package oopexcersise.vendingmachine.src.state;
+package vendingmachine.src.state;
 
 public class AfterPurchaseState implements DisplayPanelState {
 	private static AfterPurchaseState state = new AfterPurchaseState();

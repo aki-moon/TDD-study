@@ -1,4 +1,4 @@
-package oopexcersise.vendingmachine.src.state;
+package vendingmachine.src.state;
 
 import java.math.BigDecimal;
 

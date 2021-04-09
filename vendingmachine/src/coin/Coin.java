@@ -1,6 +1,6 @@
-package oopexcersise.vendingmachine.src.coin;
+package vendingmachine.src.coin;
 
-import static oopexcersise.vendingmachine.src.coin.CoinType.*;
+import static vendingmachine.src.coin.CoinType.*;
 
 public class Coin {
 	private double weight;

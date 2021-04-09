@@ -1,4 +1,4 @@
-package oopexcersise.vendingmachine.test.acceptance;
+package vendingmachine.test.acceptance;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import oopexcersise.vendingmachine.src.coin.Coin;
-import oopexcersise.vendingmachine.src.vendingmachine.VendingMachine;
+import vendingmachine.src.coin.Coin;
+import vendingmachine.src.vendingmachine.VendingMachine;
 
 class AccepptCoinsTest {
 	VendingMachine vendingMachine;

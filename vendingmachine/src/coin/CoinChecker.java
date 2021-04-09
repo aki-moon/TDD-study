@@ -1,4 +1,4 @@
-package oopexcersise.vendingmachine.src.coin;
+package vendingmachine.src.coin;
 
 public class CoinChecker {
 	private static final double NICKEL_WEIGHT = 5.0;

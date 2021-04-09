@@ -1,11 +1,11 @@
-package oopexcersise.vendingmachine.src.vendingmachine;
+package vendingmachine.src.vendingmachine;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import oopexcersise.vendingmachine.src.coin.Coin;
-import oopexcersise.vendingmachine.src.product.Product;
-import oopexcersise.vendingmachine.src.product.SelectedProduct;
+import vendingmachine.src.coin.Coin;
+import vendingmachine.src.product.Product;
+import vendingmachine.src.product.SelectedProduct;
 
 public class VendingMachine {
 	private List<Coin> returnedCoinList = new ArrayList<Coin>();

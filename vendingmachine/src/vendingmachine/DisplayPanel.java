@@ -1,10 +1,9 @@
-package oopexcersise.vendingmachine.src.vendingmachine;
+package vendingmachine.src.vendingmachine;
 
-import oopexcersise.vendingmachine.src.coin.Coin;
-import oopexcersise.vendingmachine.src.state.AfterPurchaseState;
-import oopexcersise.vendingmachine.src.state.DisplayPanelState;
-import oopexcersise.vendingmachine.src.state.RequestCoinState;
-import oopexcersise.vendingmachine.src.state.ShowAmountState;
+import vendingmachine.src.coin.Coin;
+import vendingmachine.src.state.DisplayPanelState;
+import vendingmachine.src.state.RequestCoinState;
+import vendingmachine.src.state.ShowAmountState;
 
 public class DisplayPanel {
 	private DisplayPanelState state = RequestCoinState.getInstance();
@@ -18,7 +17,7 @@ public class DisplayPanel {
 	}
 
 	public void check() {
-		state = AfterPurchaseState.getInstance();
+		state = RequestCoinState.getInstance();
 	}
 
 }

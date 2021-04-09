@@ -1,12 +1,12 @@
-package oopexcersise.vendingmachine.test.coin;
+package vendingmachine.test.coin;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import oopexcersise.vendingmachine.src.coin.Coin;
-import oopexcersise.vendingmachine.src.coin.CoinChecker;
-import oopexcersise.vendingmachine.src.coin.CoinType;
+import vendingmachine.src.coin.Coin;
+import vendingmachine.src.coin.CoinChecker;
+import vendingmachine.src.coin.CoinType;
 
 class CoinCheckerTest {
 	@Test

@@ -1,4 +1,4 @@
-package oopexcersise.vendingmachine.src.product;
+package vendingmachine.src.product;
 
 public class SelectedProduct {
 	private Product product;

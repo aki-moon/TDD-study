@@ -1,4 +1,4 @@
-package oopexcersise.vendingmachine.src.product;
+package vendingmachine.src.product;
 
 public enum Product {
 	COLA(100),

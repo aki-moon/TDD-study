@@ -1,4 +1,4 @@
-package oopexcersise.vendingmachine.src.coin;
+package vendingmachine.src.coin;
 
 public enum CoinType {
 	QUARTER(25)//

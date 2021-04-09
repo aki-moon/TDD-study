@@ -1,4 +1,4 @@
-package oopexcersise.vendingmachine.src.state;
+package vendingmachine.src.state;
 
 public class RequestCoinState implements DisplayPanelState {
 	private static RequestCoinState state = new RequestCoinState();
