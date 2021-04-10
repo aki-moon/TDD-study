@@ -29,7 +29,7 @@ public class Coin {
 
 	@Override
 	public boolean equals(Object coin) {
-		if(coin instanceof Coin) {
+		if (coin instanceof Coin) {
 			return this.weight == ((Coin) coin).weight() && this.diameter == ((Coin) coin).diameter();
 		}
 		return false;
