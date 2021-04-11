@@ -13,7 +13,7 @@ public class DisplayPanel {
 		return state.display(totalAmount);
 	}
 
-	public void addCoin(Coin coin) {
+	public void add(Coin coin) {
 		state = ShowAmountState.getInstance();
 	}
 

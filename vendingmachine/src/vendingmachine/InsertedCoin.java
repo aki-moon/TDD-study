@@ -10,7 +10,7 @@ import vendingmachine.src.coin.CoinType;
 public class InsertedCoin {
 	private List<Coin> insertedCoinList = new ArrayList<Coin>();
 
-	public void addCoin(Coin coin) {
+	public void add(Coin coin) {
 		insertedCoinList.add(coin);
 	}
 

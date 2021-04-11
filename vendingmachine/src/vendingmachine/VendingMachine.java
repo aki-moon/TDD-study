@@ -28,9 +28,9 @@ public class VendingMachine {
 
 	public void insertedCoin(Coin coin) {
 		if (coin.isValidCoin()) {
-			insertedCoin.addCoin(coin);
-			savedCoin.addCoin(coin);
-			displayPanel.addCoin(coin);
+			insertedCoin.add(coin);
+			savedCoin.add(coin);
+			displayPanel.add(coin);
 		}
 		if (coin.isUnvalidCoin()) {
 			returnedCoinList.add(coin);
