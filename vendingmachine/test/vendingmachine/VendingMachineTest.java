@@ -20,7 +20,7 @@ class VendingMachineTest {
 	}
 
 	@Nested
-	class 自動販売機に合計金額が正しく表示されること {
+	class 自動販売機の画面表示が正しく表示されること {
 		@Test
 		void コインを一枚も入れないとINSERTCOINと表示されること() {
 			assertEquals("INSERTCOIN", vendingMachine.display());
@@ -56,6 +56,17 @@ class VendingMachineTest {
 			vendingMachine.insertedCoin(nickel);
 			vendingMachine.insertedCoin(quarter);
 			assertEquals("0.4", vendingMachine.display());
+		}
+
+		@Test
+		void プロダクト購入後にTHANKYOUが表示されること() {
+			vendingMachine.pushButton(CHIPS);
+			Coin quarter = new Coin(5.67, 24.26);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.returnedProduct();
+			String messageWhenAfterCheck = vendingMachine.display();
+			assertEquals("THANKYOU", messageWhenAfterCheck);
 		}
 	}
 

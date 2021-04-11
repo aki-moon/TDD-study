@@ -1,6 +1,7 @@
 package vendingmachine.src.vendingmachine;
 
 import vendingmachine.src.coin.Coin;
+import vendingmachine.src.state.AfterPurchaseState;
 import vendingmachine.src.state.DisplayPanelState;
 import vendingmachine.src.state.RequestCoinState;
 import vendingmachine.src.state.ShowAmountState;
@@ -18,6 +19,10 @@ public class DisplayPanel {
 
 	public void check() {
 		state = RequestCoinState.getInstance();
+	}
+
+	public void clear() {
+		state = AfterPurchaseState.getInstance();
 	}
 
 }

@@ -51,6 +51,7 @@ public class VendingMachine {
 			returnedProduct = selectedProduct.product();
 			clearSelectedProduct();
 			insertedCoin.clear();
+			displayPanel.clear();
 		}
 		return returnedProduct;
 	}
