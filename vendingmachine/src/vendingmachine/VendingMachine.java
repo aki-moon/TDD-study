@@ -59,5 +59,7 @@ public class VendingMachine {
 	private void clearSelectedProduct() {
 		selectedProduct = null;
 	}
+	
+	
 
 }

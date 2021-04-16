@@ -6,13 +6,13 @@ public enum CoinType {
 	, NICKEL(5)//
 	, UNDEFINED(0);
 
-	private int coinValue;
+	private int value;
 
-	CoinType(int coinValue) {
-		this.coinValue = coinValue;
+	CoinType(int value) {
+		this.value = value;
 	}
 
-	public int coinValue() {
-		return coinValue;
+	public int value() {
+		return value;
 	}
 }

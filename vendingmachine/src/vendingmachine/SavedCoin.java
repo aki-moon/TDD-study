@@ -22,7 +22,7 @@ public class SavedCoin {
 		int totalAmount = 0;
 		for (Coin coin : savedCoinList) {
 			CoinType coinType = CoinChecker.checkCoin(coin);
-			totalAmount += coinType.coinValue();
+			totalAmount += coinType.value();
 		}
 		return totalAmount;
 	}

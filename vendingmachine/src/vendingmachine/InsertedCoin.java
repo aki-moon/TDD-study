@@ -26,7 +26,7 @@ public class InsertedCoin {
 		int totalAmount = 0;
 		for (Coin coin : insertedCoinList) {
 			CoinType coinType = CoinChecker.checkCoin(coin);
-			totalAmount += coinType.coinValue();
+			totalAmount += coinType.value();
 		}
 		return totalAmount;
 	}
