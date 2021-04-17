@@ -5,12 +5,11 @@ import java.util.List;
 
 import vendingmachine.src.coin.Coin;
 import vendingmachine.src.product.Product;
-import vendingmachine.src.product.SelectedProduct;
 
 public class VendingMachine {
 	private List<Coin> returnedCoinList = new ArrayList<Coin>();
 	private DisplayPanel displayPanel = new DisplayPanel();
-	private SelectedProduct selectedProduct = new SelectedProduct();
+	private Product selectedProduct;
 	private SavedCoin savedCoin = new SavedCoin();
 	private InsertedCoin insertedCoin = new InsertedCoin();
 
@@ -38,7 +37,7 @@ public class VendingMachine {
 	}
 
 	public void pushButton(Product product) {
-		selectedProduct.setProduct(product);
+		this.selectedProduct = product;
 	}
 
 	public void check() {
@@ -48,7 +47,7 @@ public class VendingMachine {
 	public Product returnedProduct() {
 		Product returnedProduct = null;
 		if (selectedProduct.value() == insertedCoin.totalAmount()) {
-			returnedProduct = selectedProduct.product();
+			returnedProduct = selectedProduct;
 			clearSelectedProduct();
 			insertedCoin.clear();
 			displayPanel.clear();
@@ -59,7 +58,5 @@ public class VendingMachine {
 	private void clearSelectedProduct() {
 		selectedProduct = null;
 	}
-	
-	
 
 }
