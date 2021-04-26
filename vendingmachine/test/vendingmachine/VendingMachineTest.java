@@ -29,9 +29,9 @@ class VendingMachineTest {
 		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
 		nickel = new Coin(nickelWeight, 21.21);
 		Weight dimeWeight = new Weight(BigDecimal.valueOf(2.268));
-		dime = new Coin(dimeWeight, 21.21);
+		dime = new Coin(dimeWeight, 17.91);
 		Weight quarterWeight = new Weight(BigDecimal.valueOf(5.67));
-		quarter = new Coin(quarterWeight, 21.21);
+		quarter = new Coin(quarterWeight, 24.26);
 	}
 
 	@Nested
