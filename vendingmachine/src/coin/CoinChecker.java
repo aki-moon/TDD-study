@@ -28,8 +28,6 @@ public class CoinChecker {
 	}
 
 	private static boolean isDime(Coin coin) {
-		System.out.println("diameter" + coin.diameter());
-		System.out.println("weight" + coin.weight());
 		return (coin.weight().compareTo(DIME_WEIGHT) == 0) && coin.diameter() == DIME_DIAMETER;
 	}
 
