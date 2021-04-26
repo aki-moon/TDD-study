@@ -3,20 +3,35 @@ package vendingmachine.test.vendingmachine;
 import static org.junit.jupiter.api.Assertions.*;
 import static vendingmachine.src.product.Product.*;
 
+import java.math.BigDecimal;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
+import vendingmachine.src.coin.Weight;
 import vendingmachine.src.product.Product;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
 class VendingMachineTest {
 	private VendingMachine vendingMachine;
+	private Coin unValidCoin;
+	private Coin nickel;
+	private Coin dime;
+	private Coin quarter;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		vendingMachine = new VendingMachine();
+		Weight unValidCoinweight = new Weight(BigDecimal.valueOf(10));
+		unValidCoin = new Coin(unValidCoinweight, 3);
+		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
+		nickel = new Coin(nickelWeight, 21.21);
+		Weight dimeWeight = new Weight(BigDecimal.valueOf(2.268));
+		dime = new Coin(dimeWeight, 21.21);
+		Weight quarterWeight = new Weight(BigDecimal.valueOf(5.67));
+		quarter = new Coin(quarterWeight, 21.21);
 	}
 
 	@Nested
@@ -28,30 +43,24 @@ class VendingMachineTest {
 
 		@Test
 		void ダイムを1枚入れるとコインの合計金額が0_1ドルと表示されること() {
-			Coin dime = new Coin(2.268, 17.91);
 			vendingMachine.insertedCoin(dime);
 			assertEquals("0.1", vendingMachine.display());
 		}
 
 		@Test
 		void ニッケルを1枚入れるとコインの合計金額が0_05ドルと表示されること() {
-			Coin nickel = new Coin(5, 21.21);
 			vendingMachine.insertedCoin(nickel);
 			assertEquals("0.05", vendingMachine.display());
 		}
 
 		@Test
 		void クオーターを1枚入れるとコインの合計金額が0_25ドルと表示されること() {
-			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(quarter);
 			assertEquals("0.25", vendingMachine.display());
 		}
 
 		@Test
 		void ニッケルとダイムとクオーターを1枚ずつ入れるとコインの合計金額が0_4ドルと表示されること() {
-			Coin dime = new Coin(2.268, 17.91);
-			Coin nickel = new Coin(5, 21.21);
-			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(dime);
 			vendingMachine.insertedCoin(nickel);
 			vendingMachine.insertedCoin(quarter);
@@ -61,7 +70,6 @@ class VendingMachineTest {
 		@Test
 		void プロダクト購入後にTHANKYOUが表示されること() {
 			vendingMachine.pushButton(CHIPS);
-			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.returnedProduct();
@@ -79,30 +87,26 @@ class VendingMachineTest {
 
 		@Test
 		void ダイムを1枚入れるとreturnedCoinには何も入っていないこと() {
-			Coin dime = new Coin(2.268, 17.91);
 			vendingMachine.insertedCoin(dime);
 			assertTrue(vendingMachine.returnedCoin().size() == 0);
 		}
 
 		@Test
 		void ニッケルを1枚入れるとreturnedCoinには何も入っていないこと() {
-			Coin nickel = new Coin(5, 21.21);
 			vendingMachine.insertedCoin(nickel);
 			assertTrue(vendingMachine.returnedCoin().size() == 0);
 		}
 
 		@Test
 		void クオーターを1枚入れるとreturnedCoinには何も入っていないこと() {
-			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(quarter);
 			assertTrue(vendingMachine.returnedCoin().size() == 0);
 		}
 
 		@Test
 		void 定義されていないコインを1枚入れるとreturnedCoinに返却されること() {
-			Coin undefinedCoin = new Coin(5.66, 24.26);
-			vendingMachine.insertedCoin(undefinedCoin);
-			assertEquals(undefinedCoin, vendingMachine.returnedCoin().get(0));
+			vendingMachine.insertedCoin(unValidCoin);
+			assertEquals(unValidCoin, vendingMachine.returnedCoin().get(0));
 		}
 	}
 
@@ -115,29 +119,25 @@ class VendingMachineTest {
 
 		@Test
 		void ダイムを1枚入れるとsavedCoinにはダイムが入っていること() {
-			Coin dime = new Coin(2.268, 17.91);
 			vendingMachine.insertedCoin(dime);
 			assertEquals(vendingMachine.savedCoin().get(0), dime);
 		}
 
 		@Test
-		void ニッケルを1枚入れるとsavedCoinにはダイムが入っていること() {
-			Coin nickel = new Coin(5, 21.21);
+		void ニッケルを1枚入れるとsavedCoinにはニッケルが入っていること() {
 			vendingMachine.insertedCoin(nickel);
 			assertEquals(vendingMachine.savedCoin().get(0), nickel);
 		}
 
 		@Test
-		void クオーターを1枚入れるとsavedCoinにはダイムが入っていること() {
-			Coin quarter = new Coin(5.67, 24.26);
+		void クオーターを1枚入れるとsavedCoinにはクオーターが入っていること() {
 			vendingMachine.insertedCoin(quarter);
 			assertEquals(vendingMachine.savedCoin().get(0), quarter);
 		}
 
 		@Test
 		void 定義されていないコインを1枚入れるとsavedCoinには何も入っていないこと() {
-			Coin undefinedCoin = new Coin(5.66, 24.26);
-			vendingMachine.insertedCoin(undefinedCoin);
+			vendingMachine.insertedCoin(unValidCoin);
 			assertTrue(vendingMachine.savedCoin().size() == 0);
 		}
 	}
@@ -147,7 +147,6 @@ class VendingMachineTest {
 		@Test
 		void コーラが1ドルで購入できること() {
 			vendingMachine.pushButton(COLA);
-			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
@@ -159,9 +158,6 @@ class VendingMachineTest {
 		@Test
 		void キャンディが65セントで購入できること() {
 			vendingMachine.pushButton(CANDY);
-			Coin quarter = new Coin(5.67, 24.26);
-			Coin dime = new Coin(2.268, 17.91);
-			Coin nickel = new Coin(5, 21.21);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(dime);
@@ -173,7 +169,6 @@ class VendingMachineTest {
 		@Test
 		void チップスが50セントで購入できること() {
 			vendingMachine.pushButton(CHIPS);
-			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			Product returnedProduct = vendingMachine.returnedProduct();
@@ -183,7 +178,6 @@ class VendingMachineTest {
 		@Test
 		void コーラが75セントでは購入できないこと() {
 			vendingMachine.pushButton(COLA);
-			Coin quarter = new Coin(5.67, 24.26);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);

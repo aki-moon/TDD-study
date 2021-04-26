@@ -2,20 +2,28 @@ package vendingmachine.test.acceptance;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
+import vendingmachine.src.coin.Weight;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
 class AccepptCoinsTest {
-	VendingMachine vendingMachine;
+	private VendingMachine vendingMachine;
+	private Coin unValidCoin;
+	private Coin nickel;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		vendingMachine = new VendingMachine();
+		Weight unValidCoinweight = new Weight(BigDecimal.valueOf(10));
+		unValidCoin = new Coin(unValidCoinweight, 3);
+		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
+		nickel = new Coin(nickelWeight, 21.21);
 	}
 
 	@Test
@@ -23,12 +31,10 @@ class AccepptCoinsTest {
 		String messageWhenInputNothing = vendingMachine.display();
 		assertEquals("INSERTCOIN", messageWhenInputNothing);
 
-		Coin undefinedCoin = new Coin(10, 3);
-		vendingMachine.insertedCoin(undefinedCoin);
-		String messageWhenInputUndefinedCoin = vendingMachine.display();
-		assertEquals("INSERTCOIN", messageWhenInputUndefinedCoin);
+		vendingMachine.insertedCoin(unValidCoin);
+		String messageWhenInputUnValidCoin = vendingMachine.display();
+		assertEquals("INSERTCOIN", messageWhenInputUnValidCoin);
 
-		Coin nickel = new Coin(5, 21.21);
 		vendingMachine.insertedCoin(nickel);
 		String messageWhenInputNickel = vendingMachine.display();
 		assertEquals("0.05", messageWhenInputNickel);
@@ -36,13 +42,10 @@ class AccepptCoinsTest {
 
 	@Test
 	void 有効なコインは自動販売機に貯蔵され_無効なコインはコイン返却口に返ってくること() {
-		Coin undefinedCoin = new Coin(10, 3);
-		Coin nickel = new Coin(5, 21.21);
-
-		vendingMachine.insertedCoin(undefinedCoin);
+		vendingMachine.insertedCoin(unValidCoin);
 		vendingMachine.insertedCoin(nickel);
 		List<Coin> returnedCoin = vendingMachine.returnedCoin();
-		assertEquals(undefinedCoin, returnedCoin.get(0));
+		assertEquals(unValidCoin, returnedCoin.get(0));
 		List<Coin> savedCoin = vendingMachine.savedCoin();
 		assertEquals(nickel, savedCoin.get(0));
 	}

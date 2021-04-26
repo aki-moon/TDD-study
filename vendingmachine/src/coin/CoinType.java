@@ -4,7 +4,7 @@ public enum CoinType {
 	QUARTER(25)//
 	, DIME(10)//
 	, NICKEL(5)//
-	, UNDEFINED(0);
+	, UNVALID(0);
 
 	private int value;
 

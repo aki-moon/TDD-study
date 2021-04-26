@@ -2,17 +2,19 @@ package vendingmachine.src.coin;
 
 import static vendingmachine.src.coin.CoinType.*;
 
+import java.math.BigDecimal;
+
 public class Coin {
-	private double weight;
+	private Weight weight;
 	private double diameter;
 
-	public Coin(double weight, double diameter) {
+	public Coin(Weight weight, double diameter) {
 		this.weight = weight;
 		this.diameter = diameter;
 	}
 
-	public double weight() {
-		return weight;
+	public BigDecimal weight() {
+		return weight.value();
 	};
 
 	public double diameter() {
@@ -20,17 +22,17 @@ public class Coin {
 	};
 
 	public boolean isValidCoin() {
-		return CoinChecker.checkCoin(this) != UNDEFINED;
+		return CoinChecker.checkCoin(this) != UNVALID;
 	}
 
 	public boolean isUnvalidCoin() {
-		return CoinChecker.checkCoin(this) == UNDEFINED;
+		return CoinChecker.checkCoin(this) == UNVALID;
 	}
 
 	@Override
 	public boolean equals(Object coin) {
 		if (coin instanceof Coin) {
-			return this.weight == ((Coin) coin).weight() && this.diameter == ((Coin) coin).diameter();
+			return this.weight().equals(((Coin) coin).weight()) && this.diameter == ((Coin) coin).diameter();
 		}
 		return false;
 	}
