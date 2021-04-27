@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
+import vendingmachine.src.coin.Diameter;
 import vendingmachine.src.coin.Weight;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
@@ -20,10 +21,12 @@ class AccepptCoinsTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		vendingMachine = new VendingMachine();
-		Weight unValidCoinweight = new Weight(BigDecimal.valueOf(10));
-		unValidCoin = new Coin(unValidCoinweight, 3);
+		Weight unValidCoinWeight = new Weight(BigDecimal.valueOf(10));
+		Diameter unValidCoinDiameter = new Diameter(BigDecimal.valueOf(3));
+		unValidCoin = new Coin(unValidCoinWeight, unValidCoinDiameter);
 		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
-		nickel = new Coin(nickelWeight, 21.21);
+		Diameter nickelDiameter = new Diameter(BigDecimal.valueOf(21.21));
+		nickel = new Coin(nickelWeight, nickelDiameter);
 	}
 
 	@Test

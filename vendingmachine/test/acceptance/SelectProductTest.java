@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
+import vendingmachine.src.coin.Diameter;
 import vendingmachine.src.coin.Weight;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
@@ -27,7 +28,8 @@ class SelectProductTest {
 
 		vendingMachine.pushButton(COLA);
 		Weight quarterWeight = new Weight(BigDecimal.valueOf(5.67));
-		Coin quarter = new Coin(quarterWeight, 24.26);
+		Diameter dimeDiameter = new Diameter(BigDecimal.valueOf(24.26));
+		Coin quarter = new Coin(quarterWeight, dimeDiameter);
 		vendingMachine.insertedCoin(quarter);
 		String messageWhenInputQuarterOne = vendingMachine.display();
 		assertEquals("0.25", messageWhenInputQuarterOne);
