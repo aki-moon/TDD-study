@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 
 public class Coin {
 	private Weight weight;
-	private double diameter;
+	private Diameter diameter;
 
-	public Coin(Weight weight, double diameter) {
+	public Coin(Weight weight, Diameter diameter) {
 		this.weight = weight;
 		this.diameter = diameter;
 	}
@@ -17,8 +17,8 @@ public class Coin {
 		return weight.value();
 	};
 
-	public double diameter() {
-		return diameter;
+	public BigDecimal diameter() {
+		return diameter.value();
 	};
 
 	public boolean isValidCoin() {
@@ -32,7 +32,7 @@ public class Coin {
 	@Override
 	public boolean equals(Object coin) {
 		if (coin instanceof Coin) {
-			return this.weight().equals(((Coin) coin).weight()) && this.diameter == ((Coin) coin).diameter();
+			return this.weight().equals(((Coin) coin).weight()) && this.diameter().equals(((Coin) coin).diameter());
 		}
 		return false;
 	}
