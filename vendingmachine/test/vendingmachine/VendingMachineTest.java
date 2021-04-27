@@ -5,7 +5,6 @@ import static vendingmachine.src.product.Product.*;
 
 import java.math.BigDecimal;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -16,28 +15,11 @@ import vendingmachine.src.product.Product;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
 class VendingMachineTest {
-	private VendingMachine vendingMachine;
-	private Coin unValidCoin;
-	private Coin nickel;
-	private Coin dime;
-	private Coin quarter;
-
-	@BeforeEach
-	void setUp() throws Exception {
-		vendingMachine = new VendingMachine();
-		Weight unValidCoinweight = new Weight(BigDecimal.valueOf(10));
-		Diameter unValidCoinDiameter = new Diameter(BigDecimal.valueOf(3));
-		unValidCoin = new Coin(unValidCoinweight, unValidCoinDiameter);
-		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
-		Diameter nickelDiameter = new Diameter(BigDecimal.valueOf(21.21));
-		nickel = new Coin(nickelWeight, nickelDiameter);
-		Weight dimeWeight = new Weight(BigDecimal.valueOf(2.268));
-		Diameter dimeDiameter = new Diameter(BigDecimal.valueOf(17.91));
-		dime = new Coin(dimeWeight, dimeDiameter);
-		Weight quarterWeight = new Weight(BigDecimal.valueOf(5.67));
-		Diameter quarterDiameter = new Diameter(BigDecimal.valueOf(24.26));
-		quarter = new Coin(quarterWeight, quarterDiameter);
-	}
+	private VendingMachine vendingMachine = new VendingMachine();
+	private Coin unValidCoin = createUnValidCoin();
+	private Coin nickel = createNickel();
+	private Coin dime = createDime();
+	private Coin quarter = createQuarter();
 
 	@Nested
 	class 自動販売機の画面表示が正しく表示されること {
@@ -190,5 +172,29 @@ class VendingMachineTest {
 			assertNull(returnedProduct);
 		}
 	}
+
+	private Coin createUnValidCoin() {
+		Weight unValidCoinweight = new Weight(BigDecimal.valueOf(10));
+		Diameter unValidCoinDiameter = new Diameter(BigDecimal.valueOf(3));
+		return new Coin(unValidCoinweight, unValidCoinDiameter);
+	};
+
+	private Coin createNickel() {
+		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
+		Diameter nickelDiameter = new Diameter(BigDecimal.valueOf(21.21));
+		return new Coin(nickelWeight, nickelDiameter);
+	};
+
+	private Coin createDime() {
+		Weight dimeWeight = new Weight(BigDecimal.valueOf(2.268));
+		Diameter dimeDiameter = new Diameter(BigDecimal.valueOf(17.91));
+		return new Coin(dimeWeight, dimeDiameter);
+	};
+
+	private Coin createQuarter() {
+		Weight quarterWeight = new Weight(BigDecimal.valueOf(5.67));
+		Diameter quarterDiameter = new Diameter(BigDecimal.valueOf(24.26));
+		return new Coin(quarterWeight, quarterDiameter);
+	};
 
 }
