@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
@@ -14,20 +13,9 @@ import vendingmachine.src.coin.Weight;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
 class AccepptCoinsTest {
-	private VendingMachine vendingMachine;
-	private Coin unValidCoin;
-	private Coin nickel;
-
-	@BeforeEach
-	void setUp() throws Exception {
-		vendingMachine = new VendingMachine();
-		Weight unValidCoinWeight = new Weight(BigDecimal.valueOf(10));
-		Diameter unValidCoinDiameter = new Diameter(BigDecimal.valueOf(3));
-		unValidCoin = new Coin(unValidCoinWeight, unValidCoinDiameter);
-		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
-		Diameter nickelDiameter = new Diameter(BigDecimal.valueOf(21.21));
-		nickel = new Coin(nickelWeight, nickelDiameter);
-	}
+	private VendingMachine vendingMachine = new VendingMachine();
+	private Coin unValidCoin = createUnValidCoin();;
+	private Coin nickel = createNickel();
 
 	@Test
 	void コインが挿入されていない場合はINSERTCOINを表示し_有効なコインが挿入されると表示が更新されて現在投入している金額が表示されること() {
@@ -52,5 +40,17 @@ class AccepptCoinsTest {
 		List<Coin> savedCoin = vendingMachine.savedCoin();
 		assertEquals(nickel, savedCoin.get(0));
 	}
+
+	private Coin createUnValidCoin() {
+		Weight unValidCoinweight = new Weight(BigDecimal.valueOf(10));
+		Diameter unValidCoinDiameter = new Diameter(BigDecimal.valueOf(3));
+		return new Coin(unValidCoinweight, unValidCoinDiameter);
+	};
+
+	private Coin createNickel() {
+		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
+		Diameter nickelDiameter = new Diameter(BigDecimal.valueOf(21.21));
+		return new Coin(nickelWeight, nickelDiameter);
+	};
 
 }
