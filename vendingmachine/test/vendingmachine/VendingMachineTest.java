@@ -3,23 +3,20 @@ package vendingmachine.test.vendingmachine;
 import static org.junit.jupiter.api.Assertions.*;
 import static vendingmachine.src.product.Product.*;
 
-import java.math.BigDecimal;
-
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
-import vendingmachine.src.coin.Diameter;
-import vendingmachine.src.coin.Weight;
 import vendingmachine.src.product.Product;
 import vendingmachine.src.vendingmachine.VendingMachine;
+import vendingmachine.test.coin.CoinCreater;
 
 class VendingMachineTest {
 	private VendingMachine vendingMachine = new VendingMachine();
-	private Coin unValidCoin = createUnValidCoin();
-	private Coin nickel = createNickel();
-	private Coin dime = createDime();
-	private Coin quarter = createQuarter();
+	private Coin unValidCoin = CoinCreater.createUnValidCoin();
+	private Coin nickel = CoinCreater.createNickel();
+	private Coin dime = CoinCreater.createDime();
+	private Coin quarter = CoinCreater.createQuarter();
 
 	@Nested
 	class 自動販売機の画面表示が正しく表示されること {
@@ -171,30 +168,6 @@ class VendingMachineTest {
 			Product returnedProduct = vendingMachine.returnedProduct();
 			assertNull(returnedProduct);
 		}
-	}
-
-	private Coin createUnValidCoin() {
-		Weight unValidCoinweight = new Weight(BigDecimal.valueOf(10));
-		Diameter unValidCoinDiameter = new Diameter(BigDecimal.valueOf(3));
-		return new Coin(unValidCoinweight, unValidCoinDiameter);
-	};
-
-	private Coin createNickel() {
-		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
-		Diameter nickelDiameter = new Diameter(BigDecimal.valueOf(21.21));
-		return new Coin(nickelWeight, nickelDiameter);
-	};
-
-	private Coin createDime() {
-		Weight dimeWeight = new Weight(BigDecimal.valueOf(2.268));
-		Diameter dimeDiameter = new Diameter(BigDecimal.valueOf(17.91));
-		return new Coin(dimeWeight, dimeDiameter);
-	};
-
-	private Coin createQuarter() {
-		Weight quarterWeight = new Weight(BigDecimal.valueOf(5.67));
-		Diameter quarterDiameter = new Diameter(BigDecimal.valueOf(24.26));
-		return new Coin(quarterWeight, quarterDiameter);
 	};
 
 }

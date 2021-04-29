@@ -2,20 +2,18 @@ package vendingmachine.test.acceptance;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
-import vendingmachine.src.coin.Diameter;
-import vendingmachine.src.coin.Weight;
 import vendingmachine.src.vendingmachine.VendingMachine;
+import vendingmachine.test.coin.CoinCreater;
 
 class AccepptCoinsTest {
 	private VendingMachine vendingMachine = new VendingMachine();
-	private Coin unValidCoin = createUnValidCoin();;
-	private Coin nickel = createNickel();
+	private Coin unValidCoin = CoinCreater.createUnValidCoin();;
+	private Coin nickel = CoinCreater.createNickel();
 
 	@Test
 	void コインが挿入されていない場合はINSERTCOINを表示し_有効なコインが挿入されると表示が更新されて現在投入している金額が表示されること() {
@@ -39,18 +37,6 @@ class AccepptCoinsTest {
 		assertEquals(unValidCoin, returnedCoin.get(0));
 		List<Coin> savedCoin = vendingMachine.savedCoin();
 		assertEquals(nickel, savedCoin.get(0));
-	}
-
-	private Coin createUnValidCoin() {
-		Weight unValidCoinweight = new Weight(BigDecimal.valueOf(10));
-		Diameter unValidCoinDiameter = new Diameter(BigDecimal.valueOf(3));
-		return new Coin(unValidCoinweight, unValidCoinDiameter);
-	};
-
-	private Coin createNickel() {
-		Weight nickelWeight = new Weight(BigDecimal.valueOf(5));
-		Diameter nickelDiameter = new Diameter(BigDecimal.valueOf(21.21));
-		return new Coin(nickelWeight, nickelDiameter);
 	};
 
 }

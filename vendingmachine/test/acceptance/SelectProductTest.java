@@ -3,15 +3,12 @@ package vendingmachine.test.acceptance;
 import static org.junit.jupiter.api.Assertions.*;
 import static vendingmachine.src.product.Product.*;
 
-import java.math.BigDecimal;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
-import vendingmachine.src.coin.Diameter;
-import vendingmachine.src.coin.Weight;
 import vendingmachine.src.vendingmachine.VendingMachine;
+import vendingmachine.test.coin.CoinCreater;
 
 class SelectProductTest {
 	VendingMachine vendingMachine;
@@ -27,9 +24,7 @@ class SelectProductTest {
 		assertEquals("INSERTCOIN", messageWhenInputNothing);
 
 		vendingMachine.pushButton(COLA);
-		Weight quarterWeight = new Weight(BigDecimal.valueOf(5.67));
-		Diameter dimeDiameter = new Diameter(BigDecimal.valueOf(24.26));
-		Coin quarter = new Coin(quarterWeight, dimeDiameter);
+		Coin quarter = CoinCreater.createQuarter();
 		vendingMachine.insertedCoin(quarter);
 		String messageWhenInputQuarterOne = vendingMachine.display();
 		assertEquals("0.25", messageWhenInputQuarterOne);
