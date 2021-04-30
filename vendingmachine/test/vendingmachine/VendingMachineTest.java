@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
+import vendingmachine.src.coin.CoinChecker;
 import vendingmachine.src.product.Product;
 import vendingmachine.src.vendingmachine.VendingMachine;
 import vendingmachine.test.coin.CoinCreater;
@@ -123,6 +124,20 @@ class VendingMachineTest {
 		void 定義されていないコインを1枚入れるとsavedCoinには何も入っていないこと() {
 			vendingMachine.insertedCoin(unValidCoin);
 			assertTrue(vendingMachine.savedCoin().size() == 0);
+		}
+	}
+
+	@Nested
+	class 商品よりも高い金額を入れるとお釣りが返ってくること {
+		@Test
+		void _75セント入れて65セントの商品を買うと10セント返ってくること() {
+			Coin quarter = CoinCreater.createQuarter();
+			Coin dime = CoinCreater.createDime();
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.pushButton(CANDY);
+			assertEquals(CoinChecker.checkCoin(dime), CoinChecker.checkCoin(vendingMachine.returnedCoin().get(0)));
 		}
 	}
 
