@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
-import vendingmachine.src.coin.CoinChecker;
+import vendingmachine.src.coin.CoinAssorter;
+import vendingmachine.src.coin.CoinCreater;
 import vendingmachine.src.product.Product;
 import vendingmachine.src.vendingmachine.VendingMachine;
-import vendingmachine.test.coin.CoinCreater;
 
 class VendingMachineTest {
 	private VendingMachine vendingMachine = new VendingMachine();
@@ -137,7 +137,8 @@ class VendingMachineTest {
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.pushButton(CANDY);
-			assertEquals(CoinChecker.checkCoin(dime), CoinChecker.checkCoin(vendingMachine.returnedCoin().get(0)));
+			vendingMachine.returnedProduct();
+			assertEquals(CoinAssorter.checkCoin(dime), CoinAssorter.checkCoin(vendingMachine.returnedCoin().get(0)));
 		}
 	}
 

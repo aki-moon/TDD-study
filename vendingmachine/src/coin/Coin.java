@@ -22,11 +22,11 @@ public class Coin {
 	};
 
 	public boolean isValidCoin() {
-		return CoinChecker.checkCoin(this) != UNVALID;
+		return CoinAssorter.checkCoin(this) != UNVALID;
 	}
 
 	public boolean isUnvalidCoin() {
-		return CoinChecker.checkCoin(this) == UNVALID;
+		return CoinAssorter.checkCoin(this) == UNVALID;
 	}
 
 	@Override

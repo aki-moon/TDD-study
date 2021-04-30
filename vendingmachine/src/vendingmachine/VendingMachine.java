@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vendingmachine.src.coin.Coin;
+import vendingmachine.src.coin.CoinAssorter;
+import vendingmachine.src.coin.CoinType;
 import vendingmachine.src.product.Product;
 
 public class VendingMachine {
@@ -46,8 +48,12 @@ public class VendingMachine {
 
 	public Product returnedProduct() {
 		Product returnedProduct = null;
-		if (selectedProduct.value() == insertedCoin.totalAmount()) {
+		if (insertedCoin.totalAmount() >= selectedProduct.value()) {
 			returnedProduct = selectedProduct;
+			int coinValue = insertedCoin.totalAmount() - selectedProduct.value();
+			CoinType returnedCoinType = CoinAssorter.checkCoin(coinValue);
+			Coin returnedCoin = CoinAssorter.createCoin(returnedCoinType);
+			returnedCoinList.add(returnedCoin);
 			clearSelectedProduct();
 			insertedCoin.clear();
 			displayPanel.clear();

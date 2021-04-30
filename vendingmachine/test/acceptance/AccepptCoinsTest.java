@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
+import vendingmachine.src.coin.CoinCreater;
 import vendingmachine.src.vendingmachine.VendingMachine;
-import vendingmachine.test.coin.CoinCreater;
 
 class AccepptCoinsTest {
 	private VendingMachine vendingMachine = new VendingMachine();

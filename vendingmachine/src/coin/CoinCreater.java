@@ -1,10 +1,6 @@
-package vendingmachine.test.coin;
+package vendingmachine.src.coin;
 
 import java.math.BigDecimal;
-
-import vendingmachine.src.coin.Coin;
-import vendingmachine.src.coin.Diameter;
-import vendingmachine.src.coin.Weight;
 
 public class CoinCreater {
 	private CoinCreater() {
