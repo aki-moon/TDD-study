@@ -11,7 +11,7 @@ public enum Product {
 		this.value = value;
 	}
 
-	public int value() {
+	public int amount() {
 		return value;
 	};
 }

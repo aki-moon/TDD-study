@@ -48,17 +48,21 @@ public class VendingMachine {
 
 	public Product returnedProduct() {
 		Product returnedProduct = null;
-		if (insertedCoin.totalAmount() >= selectedProduct.value()) {
+		if (insertedCoin.totalAmount() >= selectedProduct.amount()) {
 			returnedProduct = selectedProduct;
-			int coinValue = insertedCoin.totalAmount() - selectedProduct.value();
-			CoinType returnedCoinType = CoinAssorter.checkCoin(coinValue);
-			Coin returnedCoin = CoinAssorter.createCoin(returnedCoinType);
-			returnedCoinList.add(returnedCoin);
+			settleCharge();
 			clearSelectedProduct();
 			insertedCoin.clear();
 			displayPanel.clear();
 		}
 		return returnedProduct;
+	}
+
+	private void settleCharge() {
+		int totalReturnedCoinAmount = insertedCoin.totalAmount() - selectedProduct.amount();
+		CoinType returnedCoinType = CoinAssorter.checkCoin(totalReturnedCoinAmount);
+		Coin returnedCoin = CoinAssorter.createCoin(returnedCoinType);
+		returnedCoinList.add(returnedCoin);
 	}
 
 	private void clearSelectedProduct() {
