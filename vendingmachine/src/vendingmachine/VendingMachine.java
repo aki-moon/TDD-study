@@ -1,22 +1,22 @@
 package vendingmachine.src.vendingmachine;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import vendingmachine.src.coin.Coin;
 import vendingmachine.src.coin.CoinAssorter;
 import vendingmachine.src.coin.CoinType;
+import vendingmachine.src.coin.ReturnedCoin;
 import vendingmachine.src.product.Product;
 
 public class VendingMachine {
-	private List<Coin> returnedCoinList = new ArrayList<Coin>();
+	private ReturnedCoin returnedCoin = new ReturnedCoin();
 	private DisplayPanel displayPanel = new DisplayPanel();
 	private Product selectedProduct;
 	private SavedCoin savedCoin = new SavedCoin();
 	private InsertedCoin insertedCoin = new InsertedCoin();
 
 	public List<Coin> returnedCoin() {
-		return returnedCoinList;
+		return returnedCoin.coinList();
 	}
 
 	public List<Coin> savedCoin() {
@@ -34,7 +34,7 @@ public class VendingMachine {
 			displayPanel.add(coin);
 		}
 		if (coin.isUnvalidCoin()) {
-			returnedCoinList.add(coin);
+			returnedCoin.add(coin);
 		}
 	}
 
@@ -62,7 +62,7 @@ public class VendingMachine {
 		int totalReturnedCoinAmount = insertedCoin.totalAmount() - selectedProduct.amount();
 		CoinType returnedCoinType = CoinAssorter.checkCoin(totalReturnedCoinAmount);
 		Coin returnedCoin = CoinAssorter.createCoin(returnedCoinType);
-		returnedCoinList.add(returnedCoin);
+		this.returnedCoin.add(returnedCoin);
 	}
 
 	private void clearSelectedProduct() {
