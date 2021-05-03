@@ -9,11 +9,11 @@ import vendingmachine.src.coin.ReturnedCoin;
 import vendingmachine.src.product.Product;
 
 public class VendingMachine {
-	private ReturnedCoin returnedCoin = new ReturnedCoin();
 	private DisplayPanel displayPanel = new DisplayPanel();
-	private Product selectedProduct;
+	private ReturnedCoin returnedCoin = new ReturnedCoin();
 	private SavedCoin savedCoin = new SavedCoin();
 	private InsertedCoin insertedCoin = new InsertedCoin();
+	private Product selectedProduct;
 
 	public List<Coin> returnedCoin() {
 		return returnedCoin.coinList();
