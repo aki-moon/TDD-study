@@ -5,18 +5,18 @@ import java.util.List;
 import vendingmachine.src.coin.Coin;
 import vendingmachine.src.coin.CoinAssorter;
 import vendingmachine.src.coin.CoinType;
-import vendingmachine.src.coin.ReturnedCoin;
+import vendingmachine.src.coin.Change;
 import vendingmachine.src.product.Product;
 
 public class VendingMachine {
 	private DisplayPanel displayPanel = new DisplayPanel();
-	private ReturnedCoin returnedCoin = new ReturnedCoin();
+	private Change change = new Change();
 	private SavedCoin savedCoin = new SavedCoin();
 	private InsertedCoin insertedCoin = new InsertedCoin();
 	private Product selectedProduct;
 
 	public List<Coin> returnedCoin() {
-		return returnedCoin.coinList();
+		return change.coinList();
 	}
 
 	public List<Coin> savedCoin() {
@@ -34,7 +34,7 @@ public class VendingMachine {
 			displayPanel.add(coin);
 		}
 		if (coin.isUnvalidCoin()) {
-			returnedCoin.add(coin);
+			change.add(coin);
 		}
 	}
 
@@ -50,7 +50,7 @@ public class VendingMachine {
 		Product returnedProduct = null;
 		if (insertedCoin.totalAmount() >= selectedProduct.amount()) {
 			returnedProduct = selectedProduct;
-			settleCharge();
+			makeChange();
 			clearSelectedProduct();
 			insertedCoin.clear();
 			displayPanel.clear();
@@ -58,11 +58,11 @@ public class VendingMachine {
 		return returnedProduct;
 	}
 
-	private void settleCharge() {
-		int totalReturnedCoinAmount = insertedCoin.totalAmount() - selectedProduct.amount();
-		CoinType returnedCoinType = CoinAssorter.checkCoin(totalReturnedCoinAmount);
-		Coin returnedCoin = CoinAssorter.createCoin(returnedCoinType);
-		this.returnedCoin.add(returnedCoin);
+	private void makeChange() {
+		int totalChange = insertedCoin.totalAmount() - selectedProduct.amount();
+		CoinType changeCoinType = CoinAssorter.checkCoin(totalChange);
+		Coin changeCoin = CoinAssorter.createCoin(changeCoinType);
+		this.change.add(changeCoin);
 	}
 
 	private void clearSelectedProduct() {

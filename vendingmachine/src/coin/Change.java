@@ -3,7 +3,7 @@ package vendingmachine.src.coin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReturnedCoin {
+public class Change {
 	private List<Coin> returnedCoinList = new ArrayList<Coin>();
 
 	public List<Coin> coinList() {
