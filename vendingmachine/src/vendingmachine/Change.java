@@ -1,7 +1,9 @@
-package vendingmachine.src.coin;
+package vendingmachine.src.vendingmachine;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import vendingmachine.src.coin.Coin;
 
 public class Change {
 	private List<Coin> returnedCoinList = new ArrayList<Coin>();

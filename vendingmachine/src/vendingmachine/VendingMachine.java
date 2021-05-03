@@ -5,7 +5,6 @@ import java.util.List;
 import vendingmachine.src.coin.Coin;
 import vendingmachine.src.coin.CoinAssorter;
 import vendingmachine.src.coin.CoinType;
-import vendingmachine.src.coin.Change;
 import vendingmachine.src.product.Product;
 
 public class VendingMachine {
