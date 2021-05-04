@@ -1,8 +1,10 @@
 # TDD-study
 TDDを使いながら、実際にjavaでソースコードを書いてみるためのリポジトリ。
+自動販売機のエクササイズを使用して、実際にjavaでソースコードを書いてみる。
+※お題は以下を参照
+ https://github.com/guyroyse/vending-machine-kata
 
-## 自動販売機のエクササイズを使用して、実際にjavaでソースコードを書いてみる。
-### Accept coins
+## Accept coins
 *As a vendor*
 
 I want a vending machine that accepts coins So that I can collect money from the customer. 
@@ -49,6 +51,3 @@ I want to be told when exact change is required
 So that I can determine if I can buy something with the money I have before inserting it
 
 When the machine is not able to make change with the money in the machine for any of the items that it sells, it will display EXACT CHANGE ONLY instead of INSERT COIN.
-
-※お題は以下を参照
- https://github.com/guyroyse/vending-machine-kata
