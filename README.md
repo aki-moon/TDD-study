@@ -1,6 +1,8 @@
 # TDD-study
 TDDを使いながら、実際にjavaでソースコードを書いてみるためのリポジトリ。
+
 自動販売機のエクササイズを使用して、実際にjavaでソースコードを書いてみる。
+
 ※お題は以下を参照
  https://github.com/guyroyse/vending-machine-kata
 
