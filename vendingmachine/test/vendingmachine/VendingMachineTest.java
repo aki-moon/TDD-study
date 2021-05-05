@@ -3,12 +3,15 @@ package vendingmachine.test.vendingmachine;
 import static org.junit.jupiter.api.Assertions.*;
 import static vendingmachine.src.product.Product.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
 import vendingmachine.src.coin.CoinAssorter;
 import vendingmachine.src.coin.CoinCreater;
+import vendingmachine.src.coin.CoinType;
 import vendingmachine.src.product.Product;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
@@ -185,5 +188,24 @@ class VendingMachineTest {
 			assertNull(returnedProduct);
 		}
 	};
+
+	@Nested
+	class 返却ボタンを押すと投入したコインが返ってくること {
+		@Test
+		void _65セント入れた状態で返却ボタンを押すと65セントが返ってくること() {
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.insertedCoin(dime);
+			vendingMachine.insertedCoin(nickel);
+			vendingMachine.pushReturnedButton();
+			List<Coin> returnedCoinList = vendingMachine.returnedCoin();
+			int returnedCoinAmount = 0;
+			for (Coin coin : returnedCoinList) {
+				CoinType coinType = CoinAssorter.checkCoin(coin);
+				returnedCoinAmount += coinType.value();
+			}
+			assertEquals(returnedCoinAmount, 65);
+		}
+	}
 
 }

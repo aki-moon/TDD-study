@@ -68,4 +68,10 @@ public class VendingMachine {
 		selectedProduct = null;
 	}
 
+	public void pushReturnedButton() {
+		for (Coin coin : insertedCoin.insertedCoinList()) {
+			change.add(coin);
+		}
+	}
+
 }
