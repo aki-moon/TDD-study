@@ -57,7 +57,7 @@ class VendingMachineTest {
 
 		@Test
 		void プロダクト購入後にTHANKYOUが表示されること() {
-			vendingMachine.pushButton(CHIPS);
+			vendingMachine.pushSelectedProductButton(CHIPS);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.returnedProduct();
@@ -139,7 +139,7 @@ class VendingMachineTest {
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
-			vendingMachine.pushButton(CANDY);
+			vendingMachine.pushSelectedProductButton(CANDY);
 			vendingMachine.returnedProduct();
 			assertEquals(CoinAssorter.checkCoin(dime), CoinAssorter.checkCoin(vendingMachine.returnedCoin().get(0)));
 		}
@@ -149,7 +149,7 @@ class VendingMachineTest {
 	class ボタンを押して選択したプロダクトが一定金額を入れれば買えること {
 		@Test
 		void コーラが1ドルで購入できること() {
-			vendingMachine.pushButton(COLA);
+			vendingMachine.pushSelectedProductButton(COLA);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
@@ -160,7 +160,7 @@ class VendingMachineTest {
 
 		@Test
 		void キャンディが65セントで購入できること() {
-			vendingMachine.pushButton(CANDY);
+			vendingMachine.pushSelectedProductButton(CANDY);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(dime);
@@ -171,7 +171,7 @@ class VendingMachineTest {
 
 		@Test
 		void チップスが50セントで購入できること() {
-			vendingMachine.pushButton(CHIPS);
+			vendingMachine.pushSelectedProductButton(CHIPS);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			Product returnedProduct = vendingMachine.returnedProduct();
@@ -180,7 +180,7 @@ class VendingMachineTest {
 
 		@Test
 		void コーラが75セントでは購入できないこと() {
-			vendingMachine.pushButton(COLA);
+			vendingMachine.pushSelectedProductButton(COLA);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
@@ -198,13 +198,17 @@ class VendingMachineTest {
 			vendingMachine.insertedCoin(dime);
 			vendingMachine.insertedCoin(nickel);
 			vendingMachine.pushReturnedButton();
+			assertEquals(returnedCoinAmount(), 65);
+		}
+
+		private int returnedCoinAmount() {
 			List<Coin> returnedCoinList = vendingMachine.returnedCoin();
 			int returnedCoinAmount = 0;
 			for (Coin coin : returnedCoinList) {
 				CoinType coinType = CoinAssorter.checkCoin(coin);
 				returnedCoinAmount += coinType.value();
 			}
-			assertEquals(returnedCoinAmount, 65);
+			return returnedCoinAmount;
 		}
 	}
 

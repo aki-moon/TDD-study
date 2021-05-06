@@ -23,7 +23,7 @@ class SelectProductTest {
 		String messageWhenInputNothing = vendingMachine.display();
 		assertEquals("INSERTCOIN", messageWhenInputNothing);
 
-		vendingMachine.pushButton(COLA);
+		vendingMachine.pushSelectedProductButton(COLA);
 		Coin quarter = CoinCreater.createQuarter();
 		vendingMachine.insertedCoin(quarter);
 		String messageWhenInputQuarterOne = vendingMachine.display();

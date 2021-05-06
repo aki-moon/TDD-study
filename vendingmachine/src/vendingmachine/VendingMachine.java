@@ -37,7 +37,7 @@ public class VendingMachine {
 		}
 	}
 
-	public void pushButton(Product product) {
+	public void pushSelectedProductButton(Product product) {
 		this.selectedProduct = product;
 	}
 
