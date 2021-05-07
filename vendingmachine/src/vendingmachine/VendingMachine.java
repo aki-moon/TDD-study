@@ -61,7 +61,7 @@ public class VendingMachine {
 		int totalChange = insertedCoin.totalAmount() - selectedProduct.amount();
 		CoinType changeCoinType = CoinAssorter.checkCoin(totalChange);
 		Coin changeCoin = CoinAssorter.createCoin(changeCoinType);
-		this.change.add(changeCoin);
+		change.add(changeCoin);
 	}
 
 	private void clearSelectedProduct() {

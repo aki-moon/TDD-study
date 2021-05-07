@@ -12,6 +12,10 @@ public class CoinAssorter {
 	private static final BigDecimal QUARTER_WEIGHT = BigDecimal.valueOf(5.67);
 	private static final BigDecimal QUARTER_DIAMETER = BigDecimal.valueOf(24.26);
 
+	private CoinAssorter() {
+		// do nothing
+	}
+
 	public static CoinType checkCoin(Coin coin) {
 		if (isNickel(coin)) {
 			return NICKEL;
