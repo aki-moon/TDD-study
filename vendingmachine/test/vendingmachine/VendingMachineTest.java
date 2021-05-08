@@ -23,7 +23,7 @@ class VendingMachineTest {
 	private Coin quarter = CoinCreater.createQuarter();
 
 	@Nested
-	class 自動販売機の画面表示が正しく表示されること {
+	class 自動販売機の画面表示の確認 {
 		@Test
 		void コインを一枚も入れないとINSERTCOINと表示されること() {
 			assertEquals("INSERTCOIN", vendingMachine.display());
@@ -61,13 +61,19 @@ class VendingMachineTest {
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.insertedCoin(quarter);
 			vendingMachine.returnedProduct();
-			String messageWhenAfterCheck = vendingMachine.display();
-			assertEquals("THANKYOU", messageWhenAfterCheck);
+			assertEquals("THANKYOU", vendingMachine.display());
+		}
+
+		@Test
+		void お釣りを返却した後はINSERTCOINが表示されること() {
+			vendingMachine.insertedCoin(quarter);
+			vendingMachine.pushReturnedButton();
+			assertEquals("INSERTCOIN", vendingMachine.display());
 		}
 	}
 
 	@Nested
-	class 自動販売機に入れた無効なコインが返ってくること {
+	class 自動販売機に入れた無効なコインが返ってくるかの確認 {
 		@Test
 		void コインを一枚も入れないとreturnedCoinには何も入っていないこと() {
 			assertTrue(vendingMachine.returnedCoin().size() == 0);
@@ -99,7 +105,7 @@ class VendingMachineTest {
 	}
 
 	@Nested
-	class 自動販売機に入れた有効なコインが貯蔵されること {
+	class 自動販売機に入れた有効なコインが貯蔵されるかの確認 {
 		@Test
 		void コインを一枚も入れないとsavedCoinには何も入っていないこと() {
 			assertTrue(vendingMachine.savedCoin().size() == 0);
@@ -131,7 +137,7 @@ class VendingMachineTest {
 	}
 
 	@Nested
-	class 商品よりも高い金額を入れるとお釣りが返ってくること {
+	class 商品よりも高い金額を入れるとお釣りが返ってくるかの確認 {
 		@Test
 		void _75セント入れて65セントの商品を買うと10セント返ってくること() {
 			Coin quarter = CoinCreater.createQuarter();
@@ -146,7 +152,7 @@ class VendingMachineTest {
 	}
 
 	@Nested
-	class ボタンを押して選択したプロダクトが一定金額を入れれば買えること {
+	class ボタンを押して選択したプロダクトが一定金額を入れれば買えるかの確認 {
 		@Test
 		void コーラが1ドルで購入できること() {
 			vendingMachine.pushSelectedProductButton(COLA);
@@ -190,7 +196,7 @@ class VendingMachineTest {
 	};
 
 	@Nested
-	class 返却ボタンを押すと投入したコインが返ってくること {
+	class 返却ボタンを押すと投入したコインが返ってくるかの確認 {
 		@Test
 		void _65セント入れた状態で返却ボタンを押すと65セントが返ってくること() {
 			vendingMachine.insertedCoin(quarter);

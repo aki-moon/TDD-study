@@ -72,6 +72,7 @@ public class VendingMachine {
 		for (Coin coin : insertedCoin.insertedCoinList()) {
 			change.add(coin);
 		}
+		check();
 	}
 
 }
