@@ -20,19 +20,19 @@ class AccepptCoinsTest {
 		String messageWhenInputNothing = vendingMachine.display();
 		assertEquals("INSERTCOIN", messageWhenInputNothing);
 
-		vendingMachine.insertedCoin(unValidCoin);
+		vendingMachine.insertCoin(unValidCoin);
 		String messageWhenInputUnValidCoin = vendingMachine.display();
 		assertEquals("INSERTCOIN", messageWhenInputUnValidCoin);
 
-		vendingMachine.insertedCoin(nickel);
+		vendingMachine.insertCoin(nickel);
 		String messageWhenInputNickel = vendingMachine.display();
 		assertEquals("0.05", messageWhenInputNickel);
 	}
 
 	@Test
 	void 有効なコインは自動販売機に貯蔵され_無効なコインはコイン返却口に返ってくること() {
-		vendingMachine.insertedCoin(unValidCoin);
-		vendingMachine.insertedCoin(nickel);
+		vendingMachine.insertCoin(unValidCoin);
+		vendingMachine.insertCoin(nickel);
 		List<Coin> returnedCoin = vendingMachine.returnedCoin();
 		assertEquals(unValidCoin, returnedCoin.get(0));
 		List<Coin> savedCoin = vendingMachine.savedCoin();

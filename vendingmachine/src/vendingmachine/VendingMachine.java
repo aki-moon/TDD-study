@@ -26,7 +26,7 @@ public class VendingMachine {
 		return displayPanel.display(insertedCoin.totalAmount());
 	}
 
-	public void insertedCoin(Coin coin) {
+	public void insertCoin(Coin coin) {
 		if (coin.isValidCoin()) {
 			insertedCoin.add(coin);
 			savedCoin.add(coin);
@@ -37,7 +37,7 @@ public class VendingMachine {
 		}
 	}
 
-	public void pushSelectedProductButton(Product product) {
+	public void pushProductButton(Product product) {
 		this.selectedProduct = product;
 	}
 
@@ -68,7 +68,7 @@ public class VendingMachine {
 		selectedProduct = null;
 	}
 
-	public void pushReturnedButton() {
+	public void pushChangeButton() {
 		for (Coin coin : insertedCoin.insertedCoinList()) {
 			change.add(coin);
 		}
