@@ -75,4 +75,8 @@ public class VendingMachine {
 		check();
 	}
 
+	public void takeOutAllInventory() {
+		// TODO 自動生成されたメソッド・スタブ
+	}
+
 }

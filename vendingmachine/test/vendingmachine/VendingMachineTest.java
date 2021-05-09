@@ -70,6 +70,14 @@ class VendingMachineTest {
 			vendingMachine.pushChangeButton();
 			assertEquals("INSERTCOIN", vendingMachine.display());
 		}
+
+		@Test
+		void 選択した商品の在庫がない場合SOLDOUTが表示されること() {
+			vendingMachine.takeOutAllInventory();
+			vendingMachine.insertCoin(nickel);
+			vendingMachine.pushProductButton(CHIPS);
+			assertEquals("SOLDOUT", vendingMachine.display());
+		}
 	}
 
 	@Nested
