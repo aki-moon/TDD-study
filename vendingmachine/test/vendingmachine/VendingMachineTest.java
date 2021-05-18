@@ -148,8 +148,6 @@ class VendingMachineTest {
 	class 商品よりも高い金額を入れるとお釣りが返ってくるかの確認 {
 		@Test
 		void _75セント入れて65セントの商品を買うと10セント返ってくること() {
-			Coin quarter = CoinCreater.createQuarter();
-			Coin dime = CoinCreater.createDime();
 			vendingMachine.insertCoin(quarter);
 			vendingMachine.insertCoin(quarter);
 			vendingMachine.insertCoin(quarter);
