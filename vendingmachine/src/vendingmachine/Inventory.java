@@ -2,8 +2,14 @@ package vendingmachine.src.vendingmachine;
 
 public class Inventory {
 
-	public static void takeOutAll() {
-		// TODO 自動生成されたメソッド・スタブ
+	private boolean isSoldOut;
+
+	public void takeOutAll() {
+		isSoldOut = true;
+	}
+
+	public boolean isSoldOut() {
+		return isSoldOut;
 	}
 
 }

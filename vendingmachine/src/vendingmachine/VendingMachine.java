@@ -13,6 +13,7 @@ public class VendingMachine {
 	private SavedCoin savedCoin = new SavedCoin();
 	private InsertedCoin insertedCoin = new InsertedCoin();
 	private Product selectedProduct;
+	private Inventory inventory = new Inventory();
 
 	public List<Coin> returnedCoin() {
 		return change.coinList();
@@ -30,7 +31,9 @@ public class VendingMachine {
 		if (coin.isValidCoin()) {
 			insertedCoin.add(coin);
 			savedCoin.add(coin);
-			displayPanel.add(coin);
+			if (!inventory.isSoldOut()) {
+				displayPanel.add(coin);
+			}
 		}
 		if (coin.isUnvalidCoin()) {
 			change.add(coin);
@@ -76,7 +79,8 @@ public class VendingMachine {
 	}
 
 	public void takeOutAllInventory() {
-		// TODO 自動生成されたメソッド・スタブ
+		inventory.takeOutAll();
+		displayPanel.soldOut();
 	}
 
 }
