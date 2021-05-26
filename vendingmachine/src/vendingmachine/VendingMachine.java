@@ -28,12 +28,14 @@ public class VendingMachine {
 	}
 
 	public void insertCoin(Coin coin) {
+		if (inventory.isSoldOut()) {
+			change.add(coin);
+			return;
+		}
 		if (coin.isValidCoin()) {
 			insertedCoin.add(coin);
 			savedCoin.add(coin);
-			if (!inventory.isSoldOut()) {
-				displayPanel.add(coin);
-			}
+			displayPanel.add(coin);
 		}
 		if (coin.isUnvalidCoin()) {
 			change.add(coin);
