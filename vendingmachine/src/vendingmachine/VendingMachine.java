@@ -32,13 +32,14 @@ public class VendingMachine {
 			change.add(coin);
 			return;
 		}
+		if (coin.isUnvalidCoin()) {
+			change.add(coin);
+			return;
+		}
 		if (coin.isValidCoin()) {
 			insertedCoin.add(coin);
 			savedCoin.add(coin);
 			displayPanel.add(coin);
-		}
-		if (coin.isUnvalidCoin()) {
-			change.add(coin);
 		}
 	}
 
