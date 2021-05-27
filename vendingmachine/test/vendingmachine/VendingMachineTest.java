@@ -192,6 +192,18 @@ class VendingMachineTest {
 		}
 
 		@Test
+		void キャンディのボタンを押した後にコーラのボタンを押した場合コーラが買えること() {
+			vendingMachine.pushProductButton(CANDY);
+			vendingMachine.pushProductButton(COLA);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			Product returnedProduct = vendingMachine.returnedProduct();
+			assertEquals(COLA, returnedProduct);
+		}
+
+		@Test
 		void チップスが50セントで購入できること() {
 			vendingMachine.pushProductButton(CHIPS);
 			vendingMachine.insertCoin(quarter);
