@@ -182,7 +182,16 @@ class VendingMachineTest {
 		}
 
 		@Test
-		void キャンディが75セントで購入できること() {
+		void チップスが50セントで購入できること() {
+			vendingMachine.pushProductButton(CHIPS);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			Product returnedProduct = vendingMachine.returnedProduct();
+			assertEquals(CHIPS, returnedProduct);
+		}
+
+		@Test
+		void _65セントよりも高い金額を払えばキャンディが購入できること() {
 			vendingMachine.pushProductButton(CANDY);
 			vendingMachine.insertCoin(quarter);
 			vendingMachine.insertCoin(quarter);
@@ -203,14 +212,6 @@ class VendingMachineTest {
 			assertEquals(COLA, returnedProduct);
 		}
 
-		@Test
-		void チップスが50セントで購入できること() {
-			vendingMachine.pushProductButton(CHIPS);
-			vendingMachine.insertCoin(quarter);
-			vendingMachine.insertCoin(quarter);
-			Product returnedProduct = vendingMachine.returnedProduct();
-			assertEquals(CHIPS, returnedProduct);
-		}
 
 		@Test
 		void コーラが75セントでは購入できないこと() {
