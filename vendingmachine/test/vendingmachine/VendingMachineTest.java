@@ -65,6 +65,16 @@ class VendingMachineTest {
 		}
 
 		@Test
+		void プロダクト購入後にTHANKYOUが表示された後に再度表示を確認するとINSERTCOINが表示されること() {
+			vendingMachine.pushProductButton(CHIPS);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.returnedProduct();
+			vendingMachine.check();
+			assertEquals("INSERTCOIN", vendingMachine.display());
+		}
+
+		@Test
 		void お釣り返却ボタンを押した後はINSERTCOINが表示されること() {
 			vendingMachine.insertCoin(quarter);
 			vendingMachine.pushChangeButton();
