@@ -65,11 +65,20 @@ class VendingMachineTest {
 		}
 
 		@Test
-		void プロダクト購入後にTHANKYOUが表示された後に再度表示を確認するとINSERTCOINが表示されること() {
+		void プロダクト購入後THANKYOUが表示された後に再度表示を確認するとINSERTCOINが表示されること() {
 			vendingMachine.pushProductButton(CHIPS);
 			vendingMachine.insertCoin(quarter);
 			vendingMachine.insertCoin(quarter);
 			vendingMachine.returnedProduct();
+			vendingMachine.check();
+			assertEquals("INSERTCOIN", vendingMachine.display());
+		}
+
+		@Test
+		void プロダクト購入できるだけの金額が投入されていない場合_投入済みの金額が表示されて再度表示を確認するとINSERTCOINが表示されること() {
+			vendingMachine.pushProductButton(CHIPS);
+			vendingMachine.insertCoin(quarter);
+			assertEquals("0.25", vendingMachine.display());
 			vendingMachine.check();
 			assertEquals("INSERTCOIN", vendingMachine.display());
 		}
