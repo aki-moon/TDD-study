@@ -201,6 +201,16 @@ class VendingMachineTest {
 		}
 
 		@Test
+		void _1ドルよりも少ない金額ではコーラが購入できないこと() {
+			vendingMachine.pushProductButton(COLA);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			Product returnedProduct = vendingMachine.returnedProduct();
+			assertNull(returnedProduct);
+		}
+
+		@Test
 		void キャンディのボタンを押した後にコーラのボタンを押した場合コーラが買えること() {
 			vendingMachine.pushProductButton(CANDY);
 			vendingMachine.pushProductButton(COLA);
@@ -210,17 +220,6 @@ class VendingMachineTest {
 			vendingMachine.insertCoin(quarter);
 			Product returnedProduct = vendingMachine.returnedProduct();
 			assertEquals(COLA, returnedProduct);
-		}
-
-
-		@Test
-		void コーラが75セントでは購入できないこと() {
-			vendingMachine.pushProductButton(COLA);
-			vendingMachine.insertCoin(quarter);
-			vendingMachine.insertCoin(quarter);
-			vendingMachine.insertCoin(quarter);
-			Product returnedProduct = vendingMachine.returnedProduct();
-			assertNull(returnedProduct);
 		}
 	};
 
