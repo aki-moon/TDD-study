@@ -5,6 +5,7 @@ import vendingmachine.src.state.AfterPurchaseState;
 import vendingmachine.src.state.DisplayPanelState;
 import vendingmachine.src.state.RequestCoinState;
 import vendingmachine.src.state.ShowAmountState;
+import vendingmachine.src.state.ShowProductPriceState;
 import vendingmachine.src.state.SoldOutState;
 
 public class DisplayPanel {
@@ -28,6 +29,10 @@ public class DisplayPanel {
 
 	public void soldOut() {
 		state = SoldOutState.getInstance();
+	}
+
+	public void pushProductButton() {
+		state = ShowProductPriceState.getInstance();
 	}
 
 }

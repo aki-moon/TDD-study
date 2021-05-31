@@ -1,11 +1,13 @@
 package vendingmachine.src.vendingmachine;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import vendingmachine.src.coin.Coin;
 import vendingmachine.src.coin.CoinAssorter;
 import vendingmachine.src.coin.CoinType;
 import vendingmachine.src.product.Product;
+import vendingmachine.src.state.ShowProductPriceState;
 
 public class VendingMachine {
 	private DisplayPanel displayPanel = new DisplayPanel();
@@ -39,12 +41,20 @@ public class VendingMachine {
 		if (coin.isValidCoin()) {
 			insertedCoin.add(coin);
 			savedCoin.add(coin);
-			displayPanel.add(coin);
+			if(selectedProduct == null) {
+				displayPanel.add(coin);
+				return;
+			}
+			if(insertedCoin.totalAmount() > selectedProduct.amount()) {
+				displayPanel.add(coin);
+			}
 		}
 	}
 
 	public void pushProductButton(Product product) {
 		this.selectedProduct = product;
+		ShowProductPriceState.getInstance().productPrice(BigDecimal.valueOf(product.amount()));
+		displayPanel.pushProductButton();
 	}
 
 	public void check() {
