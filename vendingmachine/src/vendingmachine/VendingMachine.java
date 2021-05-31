@@ -52,6 +52,9 @@ public class VendingMachine {
 	}
 
 	public void pushProductButton(Product product) {
+		if (inventory.isSoldOut()) {
+			return;
+		}
 		this.selectedProduct = product;
 		ShowProductPriceState.getInstance().productPrice(BigDecimal.valueOf(product.amount()));
 		displayPanel.pushProductButton();

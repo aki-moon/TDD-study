@@ -27,7 +27,7 @@ class SelectProductTest {
 		Coin quarter = CoinCreater.createQuarter();
 		vendingMachine.insertCoin(quarter);
 		String messageWhenInputQuarterOne = vendingMachine.display();
-		assertEquals("0.25", messageWhenInputQuarterOne);
+		assertEquals("1", messageWhenInputQuarterOne);
 
 		vendingMachine.insertCoin(quarter);
 		vendingMachine.insertCoin(quarter);

@@ -78,7 +78,7 @@ class VendingMachineTest {
 		void プロダクト購入できるだけの金額が投入されていない場合_プロダクトの金額が表示されて再度表示を確認するとINSERTCOINが表示されること() {
 			vendingMachine.pushProductButton(CHIPS);
 			vendingMachine.insertCoin(quarter);
-			assertEquals("0.50", vendingMachine.display());
+			assertEquals("0.5", vendingMachine.display());
 			vendingMachine.check();
 			assertEquals("INSERTCOIN", vendingMachine.display());
 		}

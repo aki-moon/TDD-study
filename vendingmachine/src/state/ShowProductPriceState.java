@@ -15,7 +15,7 @@ public class ShowProductPriceState implements DisplayPanelState {
 
 	@Override
 	public String display(int totalAmountOfCent) {
-		return ProductPrice.toString();
+		return ProductPrice.divide(BigDecimal.valueOf(100)).toString();
 	}
 
 	public void productPrice(BigDecimal productPrice) {
