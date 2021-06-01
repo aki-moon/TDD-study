@@ -30,25 +30,23 @@ public class VendingMachine {
 	}
 
 	public void insertCoin(Coin coin) {
-		if (inventory.isSoldOut()) {
+		if (isReturnAsChange(coin)) {
 			change.add(coin);
 			return;
 		}
-		if (coin.isUnvalidCoin()) {
-			change.add(coin);
+		insertedCoin.add(coin);
+		savedCoin.add(coin);
+		if (selectedProduct == null) {
+			displayPanel.add(coin);
 			return;
 		}
-		if (coin.isValidCoin()) {
-			insertedCoin.add(coin);
-			savedCoin.add(coin);
-			if(selectedProduct == null) {
-				displayPanel.add(coin);
-				return;
-			}
-			if(insertedCoin.totalAmount() > selectedProduct.amount()) {
-				displayPanel.add(coin);
-			}
+		if (insertedCoin.totalAmount() > selectedProduct.amount()) {
+			displayPanel.add(coin);
 		}
+	}
+
+	private boolean isReturnAsChange(Coin coin) {
+		return inventory.isSoldOut() || coin.isUnvalidCoin();
 	}
 
 	public void pushProductButton(Product product) {
