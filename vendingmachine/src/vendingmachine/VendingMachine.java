@@ -40,9 +40,13 @@ public class VendingMachine {
 			displayPanel.add(coin);
 			return;
 		}
-		if (insertedCoin.totalAmount() > selectedProduct.amount()) {
+		if (canPurchaseProduct()) {
 			displayPanel.add(coin);
 		}
+	}
+
+	private boolean canPurchaseProduct() {
+		return insertedCoin.totalAmount() > selectedProduct.amount();
 	}
 
 	private boolean isReturnAsChange(Coin coin) {
