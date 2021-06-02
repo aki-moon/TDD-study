@@ -36,12 +36,9 @@ public class VendingMachine {
 		}
 		insertedCoin.add(coin);
 		savedCoin.add(coin);
-		if (selectedProduct == null) {
+		if (selectedProduct == null || canPurchaseProduct()) {
 			displayPanel.add(coin);
 			return;
-		}
-		if (canPurchaseProduct()) {
-			displayPanel.add(coin);
 		}
 	}
 
