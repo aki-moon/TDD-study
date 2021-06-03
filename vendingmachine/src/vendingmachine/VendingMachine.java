@@ -43,7 +43,7 @@ public class VendingMachine {
 	}
 
 	private boolean canPurchaseProduct() {
-		return insertedCoin.totalAmount() > selectedProduct.amount();
+		return insertedCoin.totalAmount() >= selectedProduct.amount();
 	}
 
 	private boolean isReturnAsChange(Coin coin) {
@@ -65,7 +65,7 @@ public class VendingMachine {
 
 	public Product returnedProduct() {
 		Product returnedProduct = null;
-		if (insertedCoin.totalAmount() >= selectedProduct.amount()) {
+		if (canPurchaseProduct()) {
 			returnedProduct = selectedProduct;
 			makeChange();
 			clearSelectedProduct();
