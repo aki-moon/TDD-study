@@ -1,6 +1,5 @@
 package vendingmachine.src.vendingmachine;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import vendingmachine.src.coin.Coin;
@@ -55,7 +54,7 @@ public class VendingMachine {
 			return;
 		}
 		this.selectedProduct = product;
-		ShowProductPriceState.getInstance().productPrice(BigDecimal.valueOf(product.amount()));
+		ShowProductPriceState.getInstance().productPrice(product.value());;
 		displayPanel.pushProductButton();
 	}
 
