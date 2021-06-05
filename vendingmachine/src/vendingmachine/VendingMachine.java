@@ -42,7 +42,7 @@ public class VendingMachine {
 	}
 
 	private boolean canPurchaseProduct() {
-		return insertedCoin.totalAmount() >= selectedProduct.value();
+		return insertedCoin.totalAmount() >= selectedProduct.value().intValue();
 	}
 
 	private boolean isReturnAsChange(Coin coin) {
@@ -54,7 +54,7 @@ public class VendingMachine {
 			return;
 		}
 		this.selectedProduct = product;
-		ShowProductPriceState.getInstance().productPrice(product.value());;
+		ShowProductPriceState.getInstance().productPrice(product.value().intValue());;
 		displayPanel.pushProductButton();
 	}
 
@@ -75,7 +75,7 @@ public class VendingMachine {
 	}
 
 	private void makeChange() {
-		int totalChange = insertedCoin.totalAmount() - selectedProduct.value();
+		int totalChange = insertedCoin.totalAmount() - selectedProduct.value().intValue();
 		CoinType changeCoinType = CoinAssorter.checkCoin(totalChange);
 		Coin changeCoin = CoinAssorter.createCoin(changeCoinType);
 		change.add(changeCoin);
