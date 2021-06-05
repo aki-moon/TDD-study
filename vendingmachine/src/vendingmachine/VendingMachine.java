@@ -42,7 +42,7 @@ public class VendingMachine {
 	}
 
 	private boolean canPurchaseProduct() {
-		return insertedCoin.totalAmount() >= selectedProduct.amount();
+		return insertedCoin.totalAmount() >= selectedProduct.value();
 	}
 
 	private boolean isReturnAsChange(Coin coin) {
@@ -75,7 +75,7 @@ public class VendingMachine {
 	}
 
 	private void makeChange() {
-		int totalChange = insertedCoin.totalAmount() - selectedProduct.amount();
+		int totalChange = insertedCoin.totalAmount() - selectedProduct.value();
 		CoinType changeCoinType = CoinAssorter.checkCoin(totalChange);
 		Coin changeCoin = CoinAssorter.createCoin(changeCoinType);
 		change.add(changeCoin);

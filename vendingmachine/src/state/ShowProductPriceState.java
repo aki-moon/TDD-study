@@ -1,10 +1,8 @@
 package vendingmachine.src.state;
 
-import java.math.BigDecimal;
-
 public class ShowProductPriceState implements DisplayPanelState {
 	private static ShowProductPriceState state = new ShowProductPriceState();
-	private BigDecimal ProductPrice;
+	private int ProductPrice;
 
 	private ShowProductPriceState() {
 	}
@@ -15,10 +13,10 @@ public class ShowProductPriceState implements DisplayPanelState {
 
 	@Override
 	public String display(int totalAmountOfCent) {
-		return ProductPrice.divide(BigDecimal.valueOf(100)).toString();
+		return String.valueOf(ProductPrice /100);
 	}
 
-	public void productPrice(BigDecimal productPrice) {
+	public void productPrice(int productPrice) {
 		ProductPrice = productPrice;
 	}
 
