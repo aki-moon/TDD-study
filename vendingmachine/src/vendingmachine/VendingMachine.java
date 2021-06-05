@@ -54,7 +54,7 @@ public class VendingMachine {
 			return;
 		}
 		this.selectedProduct = product;
-		ShowProductPriceState.getInstance().productPrice(product.price().intValue());;
+		ShowProductPriceState.getInstance().productPrice(product.price());;
 		displayPanel.pushProductButton();
 	}
 
