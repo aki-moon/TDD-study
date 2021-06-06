@@ -46,7 +46,13 @@ public class VendingMachine {
 	}
 
 	private boolean isReturnAsChange(Coin coin) {
-		return inventory.isSoldOut() || coin.isUnvalidCoin();
+		if (inventory.isSoldOut()) {
+			return true;
+		}
+		if (coin.isUnvalidCoin()) {
+			return true;
+		}
+		return false;
 	}
 
 	public void pushProductButton(Product product) {
@@ -54,7 +60,7 @@ public class VendingMachine {
 			return;
 		}
 		this.selectedProduct = product;
-		ShowProductPriceState.getInstance().productPrice(product.price());;
+		ShowProductPriceState.getInstance().productPrice(product.price());
 		displayPanel.pushProductButton();
 	}
 
