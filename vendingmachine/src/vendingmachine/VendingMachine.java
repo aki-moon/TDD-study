@@ -24,10 +24,6 @@ public class VendingMachine {
 		return savedCoin.savedCoinList();
 	}
 
-	public String display() {
-		return displayPanel.display(insertedCoin.totalAmount());
-	}
-
 	public void insertCoin(Coin coin) {
 		if (isReturnAsChange(coin)) {
 			change.add(coin);
@@ -37,7 +33,6 @@ public class VendingMachine {
 		savedCoin.add(coin);
 		if (canPurchaseProduct()) {
 			displayPanel.add(coin);
-			return;
 		}
 	}
 
@@ -49,29 +44,6 @@ public class VendingMachine {
 			return true;
 		}
 		return false;
-	}
-
-	private boolean isReturnAsChange(Coin coin) {
-		if (inventory.isSoldOut()) {
-			return true;
-		}
-		if (coin.isUnvalidCoin()) {
-			return true;
-		}
-		return false;
-	}
-
-	public void pushProductButton(Product product) {
-		if (inventory.isSoldOut()) {
-			return;
-		}
-		this.selectedProduct = product;
-		ShowProductPriceState.getInstance().productPrice(product.price());
-		displayPanel.pushProductButton();
-	}
-
-	public void check() {
-		displayPanel.check();
 	}
 
 	public Product returnedProduct() {
@@ -86,15 +58,13 @@ public class VendingMachine {
 		return returnedProduct;
 	}
 
-	private void makeChange() {
-		int totalChange = insertedCoin.totalAmount() - selectedProduct.price().intValue();
-		CoinType changeCoinType = CoinAssorter.checkCoin(totalChange);
-		Coin changeCoin = CoinAssorter.createCoin(changeCoinType);
-		change.add(changeCoin);
-	}
-
-	private void clearSelectedProduct() {
-		selectedProduct = null;
+	public void pushProductButton(Product product) {
+		if (inventory.isSoldOut()) {
+			return;
+		}
+		this.selectedProduct = product;
+		ShowProductPriceState.getInstance().productPrice(product.price());
+		displayPanel.pushProductButton();
 	}
 
 	public void pushChangeButton() {
@@ -109,4 +79,32 @@ public class VendingMachine {
 		displayPanel.soldOut();
 	}
 
+	public String display() {
+		return displayPanel.display(insertedCoin.totalAmount());
+	}
+
+	public void check() {
+		displayPanel.check();
+	}
+
+	private boolean isReturnAsChange(Coin coin) {
+		if (inventory.isSoldOut()) {
+			return true;
+		}
+		if (coin.isUnvalidCoin()) {
+			return true;
+		}
+		return false;
+	}
+
+	private void makeChange() {
+		int totalChange = insertedCoin.totalAmount() - selectedProduct.price().intValue();
+		CoinType changeCoinType = CoinAssorter.checkCoin(totalChange);
+		Coin changeCoin = CoinAssorter.createCoin(changeCoinType);
+		change.add(changeCoin);
+	}
+
+	private void clearSelectedProduct() {
+		selectedProduct = null;
+	}
 }
