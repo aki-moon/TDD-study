@@ -45,7 +45,7 @@ public class VendingMachine {
 		if (selectedProduct == null) {
 			return true;
 		}
-		if (insertedCoin.totalAmount() >= selectedProduct.price().intValue()) {
+		if (selectedProduct.canPurchase(insertedCoin.totalAmount())) {
 			return true;
 		}
 		return false;
