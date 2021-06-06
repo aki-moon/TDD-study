@@ -35,14 +35,20 @@ public class VendingMachine {
 		}
 		insertedCoin.add(coin);
 		savedCoin.add(coin);
-		if (selectedProduct == null || canPurchaseProduct()) {
+		if (canPurchaseProduct()) {
 			displayPanel.add(coin);
 			return;
 		}
 	}
 
 	private boolean canPurchaseProduct() {
-		return insertedCoin.totalAmount() >= selectedProduct.price().intValue();
+		if (selectedProduct == null) {
+			return true;
+		}
+		if (insertedCoin.totalAmount() >= selectedProduct.price().intValue()) {
+			return true;
+		}
+		return false;
 	}
 
 	private boolean isReturnAsChange(Coin coin) {
