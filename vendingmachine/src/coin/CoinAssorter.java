@@ -66,5 +66,4 @@ public class CoinAssorter {
 	private static boolean isQuarter(Coin coin) {
 		return (coin.weight().compareTo(QUARTER_WEIGHT) == 0) && (coin.diameter().compareTo(QUARTER_DIAMETER) == 0);
 	}
-
 }
