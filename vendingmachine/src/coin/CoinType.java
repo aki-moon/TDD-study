@@ -1,7 +1,7 @@
 package vendingmachine.src.coin;
 
 public enum CoinType {
-	QUARTER(25), DIME(10), NICKEL(5), UNVALID(0);
+	QUARTER_TYPE(25), DIME_TYPE(10), NICKEL_TYPE(5), UNVALID_TYPE(0);
 
 	private int value;
 
