@@ -75,12 +75,20 @@ class VendingMachineTest {
 		}
 
 		@Test
-		void プロダクト購入できるだけの金額が投入されていない場合_プロダクトの金額が表示されて再度表示を確認するとINSERTCOINが表示されること() {
+		void プロダクトが購入できない場合はプロダクトの価格を表示し_コインを入れられていない場合はINSERTCOINを表示すること() {
 			vendingMachine.pushProductButton(CHIPS);
-			vendingMachine.insertCoin(quarter);
 			assertEquals("0.5", vendingMachine.display());
 			vendingMachine.check();
 			assertEquals("INSERTCOIN", vendingMachine.display());
+		}
+
+		@Test
+		void プロダクトが購入できない場合はプロダクトの価格を表示し_その後の表示確認でコインの合計金額を表示すること() {
+			vendingMachine.pushProductButton(CHIPS);
+			vendingMachine.insertCoin(dime);
+			assertEquals("0.5", vendingMachine.display());
+			vendingMachine.check();
+			assertEquals("0.1", vendingMachine.display());
 		}
 
 		@Test
