@@ -71,6 +71,7 @@ public class VendingMachine {
 		for (Coin coin : insertedCoin.insertedCoinList()) {
 			change.add(coin);
 		}
+		insertedCoin.clear();
 		check();
 	}
 
@@ -84,6 +85,10 @@ public class VendingMachine {
 	}
 
 	public void check() {
+		if (insertedCoin.totalAmount() != 0) {
+			displayPanel.add(null);
+			return;
+		}
 		displayPanel.check();
 	}
 

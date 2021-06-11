@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import vendingmachine.src.coin.Coin;
 import vendingmachine.src.coin.CoinCreater;
+import vendingmachine.src.product.Product;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
 class SelectProductTest {
@@ -35,6 +36,8 @@ class SelectProductTest {
 		String messageWhenInputQuarterFour = vendingMachine.display();
 		assertEquals("1", messageWhenInputQuarterFour);
 
+		Product product = vendingMachine.returnedProduct();
+		assertEquals(COLA, product);
 		vendingMachine.check();
 		String messageWhenAfterCheck = vendingMachine.display();
 		assertEquals("INSERTCOIN", messageWhenAfterCheck);
