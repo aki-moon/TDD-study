@@ -172,7 +172,7 @@ class VendingMachineTest {
 	}
 
 	@Nested
-	class 商品よりも高い金額を入れるとお釣りが返ってくるかの確認 {
+	class お釣りを返却する機能の確認 {
 		@Test
 		void _75セント入れて65セントの商品を買うと10セント返ってくること() {
 			vendingMachine.insertCoin(quarter);
@@ -180,7 +180,20 @@ class VendingMachineTest {
 			vendingMachine.insertCoin(quarter);
 			vendingMachine.pushProductButton(CANDY);
 			vendingMachine.returnedProduct();
-			assertEquals(CoinAssorter.checkCoin(dime), CoinAssorter.checkCoin(vendingMachine.returnedCoin().get(0)));
+			CoinType dimeType = CoinAssorter.checkCoin(dime);
+			CoinType returnedCoinType = CoinAssorter.checkCoin(vendingMachine.returnedCoin().get(0));
+			assertEquals(dimeType, returnedCoinType);
+		}
+
+		@Test
+		void _65セント入れて65セントの商品を買うとお釣りが返ってこないこと() {
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(dime);
+			vendingMachine.insertCoin(nickel);
+			vendingMachine.pushProductButton(CANDY);
+			vendingMachine.returnedProduct();
+			assertNull(vendingMachine.returnedCoin().get(0));
 		}
 	}
 
