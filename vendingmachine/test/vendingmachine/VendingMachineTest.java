@@ -281,17 +281,17 @@ class VendingMachineTest {
 			vendingMachine.insertCoin(dime);
 			vendingMachine.insertCoin(nickel);
 			vendingMachine.pushChangeButton();
-			assertEquals(changeAmount(), 65);
+			assertEquals(change(), 65);
 		}
 
-		private int changeAmount() {
+		private int change() {
 			List<Coin> returnedCoinList = vendingMachine.returnedCoin();
-			int returnedCoinAmount = 0;
+			int change = 0;
 			for (Coin coin : returnedCoinList) {
 				CoinType coinType = CoinAssorter.checkCoin(coin);
-				returnedCoinAmount += coinType.value();
+				change += coinType.value();
 			}
-			return returnedCoinAmount;
+			return change;
 		}
 	}
 
