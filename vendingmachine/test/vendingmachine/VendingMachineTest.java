@@ -193,7 +193,16 @@ class VendingMachineTest {
 			vendingMachine.insertCoin(nickel);
 			vendingMachine.pushProductButton(CANDY);
 			vendingMachine.returnedProduct();
-			assertNull(vendingMachine.returnedCoin().get(0));
+			assertTrue(vendingMachine.returnedCoin().size() == 0);
+		}
+
+		@Test
+		void _50セント入れて65セントの商品を押してもお釣りが返ってこないこと() {
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.insertCoin(quarter);
+			vendingMachine.pushProductButton(CANDY);
+			vendingMachine.returnedProduct();
+			assertTrue(vendingMachine.returnedCoin().size() == 0);
 		}
 	}
 
