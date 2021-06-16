@@ -105,6 +105,23 @@ class VendingMachineTest {
 			vendingMachine.pushProductButton(CHIPS);
 			assertEquals("SOLDOUT", vendingMachine.display());
 		}
+
+		@Test
+		void マシンに硬貨を入れた状態でSOLDOUT表示後に画面を確認すると残っている金額が表示されること() {
+			vendingMachine.insertCoin(nickel);
+			vendingMachine.takeOutAllInventory();
+			vendingMachine.pushProductButton(CHIPS);
+			vendingMachine.check();
+			assertEquals("0.05", vendingMachine.display());
+		}
+
+		@Test
+		void マシンに硬貨がない状態でSOLDOUT表示後に画面を確認するとINSERTCOINが表示されること() {
+			vendingMachine.takeOutAllInventory();
+			vendingMachine.pushProductButton(CHIPS);
+			vendingMachine.check();
+			assertEquals("INSERTCOIN", vendingMachine.display());
+		}
 	}
 
 	@Nested
