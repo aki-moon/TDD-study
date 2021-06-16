@@ -270,7 +270,7 @@ class VendingMachineTest {
 			Product returnedProduct = vendingMachine.returnedProduct();
 			assertEquals(COLA, returnedProduct);
 		}
-	};
+	}
 
 	@Nested
 	class 返却ボタンを押すと投入したコインが返ってくるかの確認 {
@@ -282,6 +282,12 @@ class VendingMachineTest {
 			vendingMachine.insertCoin(nickel);
 			vendingMachine.pushChangeButton();
 			assertEquals(change(), 65);
+		}
+
+		@Test
+		void 何もお金を入れていない状態で返却ボタンを押すと何も返ってこないこと() {
+			vendingMachine.pushChangeButton();
+			assertEquals(change(), 0);
 		}
 
 		private int change() {
