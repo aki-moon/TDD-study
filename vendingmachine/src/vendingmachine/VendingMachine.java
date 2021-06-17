@@ -4,7 +4,6 @@ import java.util.List;
 
 import vendingmachine.src.coin.Coin;
 import vendingmachine.src.coin.CoinAssorter;
-import vendingmachine.src.coin.CoinType;
 import vendingmachine.src.product.Product;
 import vendingmachine.src.state.ShowProductPriceState;
 
@@ -104,8 +103,7 @@ public class VendingMachine {
 
 	private void makeChange() {
 		int totalChange = insertedCoin.totalAmount() - selectedProduct.price().intValue();
-		CoinType changeCoinType = CoinAssorter.checkCoin(totalChange);
-		Coin changeCoin = CoinAssorter.createCoin(changeCoinType);
+		Coin changeCoin = CoinAssorter.changeCoin(totalChange);
 		if (changeCoin != null) {
 			change.add(changeCoin);
 		}

@@ -50,6 +50,12 @@ public class CoinAssorter {
 		return null;
 	}
 
+	public static Coin changeCoin(int totalChange) {
+		CoinType changeCoinType = checkCoin(totalChange);
+		Coin changeCoin = createCoin(changeCoinType);
+		return changeCoin;
+	}
+
 	private static boolean isNickel(Coin coin) {
 		return coin.equals(NICKEL);
 	}
