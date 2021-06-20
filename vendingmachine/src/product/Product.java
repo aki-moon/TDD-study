@@ -1,7 +1,5 @@
 package vendingmachine.src.product;
 
-import java.math.BigDecimal;
-
 import vendingmachine.src.coin.Price;
 
 public enum Product {
@@ -9,15 +7,15 @@ public enum Product {
 
 	private Price price;
 
-	Product(int value) {
-		this.price = new Price(value);
+	Product(int price) {
+		this.price = new Price(price);
 	}
 
-	public BigDecimal price() {
+	public int price() {
 		return price.value();
 	}
 
 	public boolean canPurchase(int amount) {
-		return amount >= price.value().intValue();
+		return amount >= price.value();
 	}
 }
