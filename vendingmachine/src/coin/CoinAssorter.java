@@ -1,12 +1,9 @@
 package vendingmachine.src.coin;
 
+import static vendingmachine.src.coin.CoinConstant.*;
 import static vendingmachine.src.coin.CoinType.*;
 
 public class CoinAssorter {
-	private static final Coin NICKEL = CoinCreater.createNickel();
-	private static final Coin DIME = CoinCreater.createDime();
-	private static final Coin QUARTER = CoinCreater.createQuarter();
-
 	private CoinAssorter() {
 		// do nothing
 	}
@@ -39,13 +36,13 @@ public class CoinAssorter {
 
 	public static Coin createCoin(CoinType coinType) {
 		if (coinType == NICKEL_TYPE) {
-			return CoinCreater.createNickel();
+			return NICKEL;
 		}
 		if (coinType == DIME_TYPE) {
-			return CoinCreater.createDime();
+			return DIME;
 		}
 		if (coinType == QUARTER_TYPE) {
-			return CoinCreater.createQuarter();
+			return QUARTER;
 		}
 		return null;
 	}

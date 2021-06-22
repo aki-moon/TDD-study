@@ -1,13 +1,12 @@
 package vendingmachine.test.acceptance;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static vendingmachine.src.coin.CoinConstant.*;
 import static vendingmachine.src.product.Product.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import vendingmachine.src.coin.Coin;
-import vendingmachine.src.coin.CoinCreater;
 import vendingmachine.src.product.Product;
 import vendingmachine.src.vendingmachine.VendingMachine;
 
@@ -25,14 +24,13 @@ class SelectProductTest {
 		assertEquals("INSERTCOIN", messageWhenInputNothing);
 
 		vendingMachine.pushProductButton(COLA);
-		Coin quarter = CoinCreater.createQuarter();
-		vendingMachine.insertCoin(quarter);
+		vendingMachine.insertCoin(QUARTER);
 		String messageWhenInputQuarterOne = vendingMachine.display();
 		assertEquals("1", messageWhenInputQuarterOne);
 
-		vendingMachine.insertCoin(quarter);
-		vendingMachine.insertCoin(quarter);
-		vendingMachine.insertCoin(quarter);
+		vendingMachine.insertCoin(QUARTER);
+		vendingMachine.insertCoin(QUARTER);
+		vendingMachine.insertCoin(QUARTER);
 		String messageWhenInputQuarterFour = vendingMachine.display();
 		assertEquals("1", messageWhenInputQuarterFour);
 
