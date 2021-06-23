@@ -47,7 +47,7 @@ public class CoinAssorter {
 		return null;
 	}
 
-	public static Coin changeCoin(int totalChange) {
+	public static Coin makeChange(int totalChange) {
 		CoinType changeCoinType = checkCoin(totalChange);
 		Coin changeCoin = createCoin(changeCoinType);
 		return changeCoin;
