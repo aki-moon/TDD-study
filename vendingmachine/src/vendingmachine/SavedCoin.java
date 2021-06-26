@@ -26,5 +26,4 @@ public class SavedCoin {
 		}
 		return totalAmount;
 	}
-
 }

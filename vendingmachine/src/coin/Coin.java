@@ -15,11 +15,11 @@ public class Coin {
 
 	public BigDecimal weight() {
 		return weight.value();
-	};
+	}
 
 	public BigDecimal diameter() {
 		return diameter.value();
-	};
+	}
 
 	public boolean isValidCoin() {
 		return CoinAssorter.checkCoin(this) != UNVALID_TYPE;
