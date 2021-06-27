@@ -31,7 +31,7 @@ public class VendingMachine {
 		insertedCoin.add(coin);
 		savedCoin.add(coin);
 		if (canPurchaseProduct()) {
-			displayPanel.add(coin);
+			displayPanel.showAmount();
 		}
 	}
 
@@ -85,7 +85,7 @@ public class VendingMachine {
 
 	public void check() {
 		if (insertedCoin.totalAmount() != 0) {
-			displayPanel.add(null);
+			displayPanel.showAmount();
 			return;
 		}
 		displayPanel.check();
