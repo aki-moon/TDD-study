@@ -217,6 +217,13 @@ class VendingMachineTest {
 			vendingMachine.returnedProduct();
 			assertTrue(vendingMachine.returnedCoin().size() == 0);
 		}
+
+		@Test
+		void _0セント入れて65セントの商品を押してもお釣りが返ってこないこと() {
+			vendingMachine.pushProductButton(CANDY);
+			vendingMachine.returnedProduct();
+			assertTrue(vendingMachine.returnedCoin().size() == 0);
+		}
 	}
 
 	@Nested
